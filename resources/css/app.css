@@ -1,0 +1,108 @@
+@import 'tailwindcss';
+
+
+@import './components/btn.css' layer(components);
+@import './components/form.css' layer(components);
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+
+    /* Soft pink dark palette */
+    --color-background: oklch(0.19 0.022 345);
+    --color-foreground: oklch(0.97 0.008 10);
+    --color-card: oklch(0.235 0.026 345);
+    --color-card-foreground: oklch(0.97 0.008 10);
+    --color-primary: oklch(0.78 0.13 355);
+    --color-primary-foreground: oklch(0.2 0.03 345);
+    --color-secondary: oklch(0.74 0.12 325);
+    --color-secondary-foreground: oklch(0.98 0.008 10);
+    --color-accent: oklch(0.84 0.09 20);
+    --color-accent-foreground: oklch(0.22 0.03 345);
+    --color-muted: oklch(0.285 0.024 345);
+    --color-muted-foreground: oklch(0.75 0.02 355);
+    --color-border: oklch(0.34 0.03 345);
+    --color-input: oklch(0.265 0.024 345);
+    --color-destructive: oklch(0.66 0.2 22);
+    --color-destructive-foreground: oklch(0.98 0.01 0);
+    --color-success: oklch(0.78 0.16 155);
+    --color-warning: oklch(0.84 0.13 85);
+    --color-info: oklch(0.76 0.1 310);
+}
+
+@layer base {
+    [x-cloak] {
+        display: none !important;
+    }
+
+    html {
+        color-scheme: dark;
+        scroll-behavior: smooth;
+    }
+
+    body {
+        min-height: 100dvh;
+        background-color: var(--color-background);
+        background-image:
+            radial-gradient(70rem 45rem at 10% -10%, color-mix(in oklab, var(--color-primary) 12%, transparent), transparent 65%),
+            radial-gradient(55rem 40rem at 90% -8%, color-mix(in oklab, var(--color-secondary) 12%, transparent), transparent 65%),
+            radial-gradient(50rem 35rem at 50% 115%, color-mix(in oklab, var(--color-accent) 10%, transparent), transparent 70%);
+        background-attachment: fixed;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection {
+        background-color: color-mix(in oklab, var(--color-primary) 28%, transparent);
+        color: var(--color-foreground);
+    }
+
+    ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: color-mix(in oklab, var(--color-background) 85%, black);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        border: 2px solid transparent;
+        border-radius: 999px;
+        background-clip: padding-box;
+        background-color: color-mix(in oklab, var(--color-border) 85%, white);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background-color: color-mix(in oklab, var(--color-primary) 45%, var(--color-border));
+    }
+}
+
+@layer components {
+    .grid-backdrop {
+        background-image:
+            linear-gradient(to right, color-mix(in oklab, var(--color-border) 45%, transparent) 1px, transparent 1px),
+            linear-gradient(to bottom, color-mix(in oklab, var(--color-border) 45%, transparent) 1px, transparent 1px);
+        background-size: 56px 56px;
+        -webkit-mask-image: radial-gradient(ellipse 85% 65% at 50% 0%, black, transparent 80%);
+        mask-image: radial-gradient(ellipse 85% 65% at 50% 0%, black, transparent 80%);
+        opacity: 0.45;
+    }
+
+    .text-gradient {
+        background-image: linear-gradient(120deg, var(--color-primary), var(--color-secondary) 55%, var(--color-accent));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .panel {
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-2xl);
+        background-color: color-mix(in oklab, var(--color-card) 82%, transparent);
+        backdrop-filter: blur(12px);
+    }
+}

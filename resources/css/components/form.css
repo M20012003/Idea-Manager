@@ -1,0 +1,109 @@
+label {
+    color: var(--color-foreground);
+}
+
+.label {
+    display: block;
+    color: var(--color-foreground);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+.input,
+.textarea {
+    width: 100%;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background-color: color-mix(in oklab, var(--color-input) 70%, transparent);
+    color: var(--color-foreground);
+    padding: calc(var(--spacing) * 2.5) calc(var(--spacing) * 3.5);
+    font-size: var(--text-sm);
+    line-height: 1.5;
+    outline: none;
+    transition:
+        border-color 150ms ease,
+        box-shadow 150ms ease,
+        background-color 150ms ease;
+}
+
+.input {
+    height: calc(var(--spacing) * 10);
+}
+
+.textarea {
+    min-height: calc(var(--spacing) * 28);
+    resize: vertical;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+    color: color-mix(in oklab, var(--color-muted-foreground) 80%, transparent);
+}
+
+.input:focus-visible,
+.textarea:focus-visible {
+    border-color: color-mix(in oklab, var(--color-primary) 70%, var(--color-border));
+    background-color: var(--color-input);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-primary) 22%, transparent);
+}
+
+.input-error {
+    border-color: color-mix(in oklab, var(--color-destructive) 65%, var(--color-border));
+}
+
+.input-error:focus-visible {
+    border-color: var(--color-destructive);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-destructive) 20%, transparent);
+}
+
+.error {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--spacing) * 1.5);
+    color: var(--color-destructive);
+    font-size: var(--text-xs);
+}
+
+.error > svg {
+    width: 0.875rem;
+    height: 0.875rem;
+    flex-shrink: 0;
+}
+
+.file-drop {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: calc(var(--spacing) * 32);
+    padding: calc(var(--spacing) * 4);
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-lg);
+    background-color: color-mix(in oklab, var(--color-input) 55%, transparent);
+    color: var(--color-muted-foreground);
+    text-align: center;
+    cursor: pointer;
+    transition:
+        border-color 150ms ease,
+        background-color 150ms ease,
+        color 150ms ease;
+}
+
+.file-drop:hover {
+    border-color: color-mix(in oklab, var(--color-primary) 70%, var(--color-border));
+    background-color: color-mix(in oklab, var(--color-primary) 8%, var(--color-card));
+    color: var(--color-foreground);
+}
+
+.file-drop:focus-within {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-primary) 22%, transparent);
+}
+
+@media (min-width: 48rem) {
+    .input,
+    .textarea {
+        font-size: var(--text-sm);
+    }
+}

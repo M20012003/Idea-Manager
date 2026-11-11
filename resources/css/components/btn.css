@@ -1,0 +1,131 @@
+button {
+    cursor: pointer;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: calc(var(--spacing) * 2);
+    height: calc(var(--spacing) * 9);
+    padding-inline: calc(var(--spacing) * 4);
+    border: 1px solid transparent;
+    border-radius: var(--radius-lg);
+    background-color: var(--color-primary);
+    background-image: linear-gradient(
+        135deg,
+        color-mix(in oklab, var(--color-primary) 92%, white),
+        color-mix(in oklab, var(--color-primary) 55%, var(--color-secondary))
+    );
+    color: var(--color-primary-foreground);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    line-height: 1;
+    white-space: nowrap;
+    text-decoration: none;
+    box-shadow:
+        inset 0 1px 0 color-mix(in oklab, white 30%, transparent),
+        0 12px 28px -18px color-mix(in oklab, var(--color-primary) 95%, transparent);
+    transition:
+        transform 150ms ease,
+        box-shadow 150ms ease,
+        background-color 150ms ease,
+        border-color 150ms ease,
+        color 150ms ease,
+        opacity 150ms ease;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    background-image: linear-gradient(
+        135deg,
+        color-mix(in oklab, var(--color-primary) 96%, white),
+        color-mix(in oklab, var(--color-primary) 45%, var(--color-secondary))
+    );
+    box-shadow:
+        inset 0 1px 0 color-mix(in oklab, white 35%, transparent),
+        0 16px 32px -16px color-mix(in oklab, var(--color-primary) 90%, transparent);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn:focus-visible {
+    outline: 2px solid color-mix(in oklab, var(--color-primary) 70%, white);
+    outline-offset: 2px;
+}
+
+.btn:disabled,
+.btn[aria-disabled='true'] {
+    opacity: 0.55;
+    transform: none;
+    cursor: not-allowed;
+}
+
+.btn:has(> svg) {
+    display: inline-flex;
+}
+
+.btn-outlined {
+    background-image: none;
+    background-color: color-mix(in oklab, var(--color-card) 75%, transparent);
+    border-color: var(--color-border);
+    color: var(--color-foreground);
+    box-shadow: none;
+}
+
+.btn-outlined:hover {
+    background-color: color-mix(in oklab, var(--color-primary) 12%, var(--color-card));
+    border-color: color-mix(in oklab, var(--color-primary) 55%, var(--color-border));
+    color: var(--color-primary);
+    box-shadow: 0 10px 24px -20px color-mix(in oklab, var(--color-primary) 90%, transparent);
+}
+
+.btn-ghost {
+    background-image: none;
+    background-color: transparent;
+    color: var(--color-muted-foreground);
+    box-shadow: none;
+}
+
+.btn-ghost:hover {
+    background-color: color-mix(in oklab, var(--color-foreground) 8%, transparent);
+    color: var(--color-foreground);
+    box-shadow: none;
+}
+
+.btn-danger {
+    background-image: linear-gradient(
+        135deg,
+        var(--color-destructive),
+        color-mix(in oklab, var(--color-destructive) 55%, var(--color-secondary))
+    );
+    color: var(--color-destructive-foreground);
+    box-shadow: 0 12px 28px -20px color-mix(in oklab, var(--color-destructive) 95%, transparent);
+}
+
+.btn-danger:hover {
+    background-image: linear-gradient(
+        135deg,
+        color-mix(in oklab, var(--color-destructive) 88%, white),
+        color-mix(in oklab, var(--color-destructive) 70%, var(--color-secondary))
+    );
+}
+
+.btn-danger.btn-outlined {
+    background-image: none;
+    background-color: transparent;
+    border-color: color-mix(in oklab, var(--color-destructive) 45%, var(--color-border));
+    color: var(--color-destructive);
+    box-shadow: none;
+}
+
+.btn-danger.btn-outlined:hover {
+    background-color: color-mix(in oklab, var(--color-destructive) 12%, transparent);
+}
+
+.btn-icon {
+    width: calc(var(--spacing) * 9);
+    padding-inline: 0;
+}

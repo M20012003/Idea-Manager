@@ -1,0 +1,18 @@
+// cb5086709b9cdae241d19516989ddf4b08f729bd
+// tests/e2e/example.spec.js — minimal smoke test proving the "lite" Playwright setup works
+// against the running Laravel dev server. Intentionally tiny so it costs almost nothing
+// on a 4 GB machine.
+//
+// Before running:   php artisan serve     (in another terminal)
+// Then:             npx playwright test   (or: playwright test, it is installed globally)
+
+import { test, expect } from '@playwright/test';
+test('home page returns 200 and has a title', async ({
+  page
+}) => {
+  await page.goto('/', {
+    waitUntil: 'domcontentloaded'
+  });
+  await expect(page).toHaveTitle(/.+/);
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJ0ZXN0IiwiZXhwZWN0IiwicGFnZSIsImdvdG8iLCJ3YWl0VW50aWwiLCJ0b0hhdmVUaXRsZSJdLCJzb3VyY2VzIjpbImV4YW1wbGUuc3BlYy5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyB0ZXN0cy9lMmUvZXhhbXBsZS5zcGVjLmpzIOKAlCBtaW5pbWFsIHNtb2tlIHRlc3QgcHJvdmluZyB0aGUgXCJsaXRlXCIgUGxheXdyaWdodCBzZXR1cCB3b3Jrc1xuLy8gYWdhaW5zdCB0aGUgcnVubmluZyBMYXJhdmVsIGRldiBzZXJ2ZXIuIEludGVudGlvbmFsbHkgdGlueSBzbyBpdCBjb3N0cyBhbG1vc3Qgbm90aGluZ1xuLy8gb24gYSA0IEdCIG1hY2hpbmUuXG4vL1xuLy8gQmVmb3JlIHJ1bm5pbmc6ICAgcGhwIGFydGlzYW4gc2VydmUgICAgIChpbiBhbm90aGVyIHRlcm1pbmFsKVxuLy8gVGhlbjogICAgICAgICAgICAgbnB4IHBsYXl3cmlnaHQgdGVzdCAgIChvcjogcGxheXdyaWdodCB0ZXN0LCBpdCBpcyBpbnN0YWxsZWQgZ2xvYmFsbHkpXG5cbmltcG9ydCB7IHRlc3QsIGV4cGVjdCB9IGZyb20gJ0BwbGF5d3JpZ2h0L3Rlc3QnO1xuXG50ZXN0KCdob21lIHBhZ2UgcmV0dXJucyAyMDAgYW5kIGhhcyBhIHRpdGxlJywgYXN5bmMgKHsgcGFnZSB9KSA9PiB7XG4gICAgYXdhaXQgcGFnZS5nb3RvKCcvJywgeyB3YWl0VW50aWw6ICdkb21jb250ZW50bG9hZGVkJyB9KTtcbiAgICBhd2FpdCBleHBlY3QocGFnZSkudG9IYXZlVGl0bGUoLy4rLyk7XG59KTtcbiJdLCJtYXBwaW5ncyI6IkFBQUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLFNBQVNBLElBQUksRUFBRUMsTUFBTSxRQUFRLGtCQUFrQjtBQUUvQ0QsSUFBSSxDQUFDLHVDQUF1QyxFQUFFLE9BQU87RUFBRUU7QUFBSyxDQUFDLEtBQUs7RUFDOUQsTUFBTUEsSUFBSSxDQUFDQyxJQUFJLENBQUMsR0FBRyxFQUFFO0lBQUVDLFNBQVMsRUFBRTtFQUFtQixDQUFDLENBQUM7RUFDdkQsTUFBTUgsTUFBTSxDQUFDQyxJQUFJLENBQUMsQ0FBQ0csV0FBVyxDQUFDLElBQUksQ0FBQztBQUN4QyxDQUFDLENBQUMiLCJpZ25vcmVMaXN0IjpbXX0=

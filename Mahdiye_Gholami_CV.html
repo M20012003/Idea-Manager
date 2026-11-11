@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahdiye Gholami — CV</title>
+    <style>
+        :root {
+            --ink: #1f2933;
+            --muted: #616e7c;
+            --accent: #2563eb;
+            --line: #e4e7eb;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: var(--ink);
+            background: #f4f6f8;
+            margin: 0;
+            padding: 32px 0;
+            line-height: 1.55;
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            background: #fff;
+            padding: 40px 46px;
+            box-shadow: 0 2px 14px rgba(0, 0, 0, 0.08);
+        }
+
+        header { border-bottom: 2px solid var(--accent); padding-bottom: 18px; }
+
+        h1 { font-size: 30px; margin: 0 0 4px; letter-spacing: 0.5px; }
+
+        .role { font-size: 15px; color: var(--accent); font-weight: 600; margin: 0 0 12px; }
+
+        .contact {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 22px;
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .contact span::before {
+            content: attr(data-label);
+            color: var(--ink);
+            font-weight: 600;
+            margin-right: 5px;
+        }
+
+        h2 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: var(--accent);
+            margin: 26px 0 10px;
+            border-bottom: 1px solid var(--line);
+            padding-bottom: 5px;
+        }
+
+        p.summary { margin: 0; font-size: 14px; }
+
+        .item { margin-bottom: 14px; }
+        .item:last-child { margin-bottom: 0; }
+
+        .item-title { display: flex; justify-content: space-between; font-size: 14px; font-weight: 600; }
+        .item-title .when { color: var(--muted); font-weight: 400; font-size: 13px; }
+        .item-sub { font-size: 13px; color: var(--muted); margin: 2px 0 4px; font-style: italic; }
+
+        ul { margin: 6px 0 0; padding-left: 20px; font-size: 13.5px; }
+        ul li { margin-bottom: 3px; }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: 6px 14px;
+            font-size: 13.5px;
+        }
+        .skills-grid dt { font-weight: 600; }
+        .skills-grid dd { margin: 0; color: var(--ink); }
+
+        .langs { display: flex; gap: 26px; flex-wrap: wrap; font-size: 13.5px; }
+        .langs b { color: var(--ink); }
+
+        @media print {
+            body { background: #fff; padding: 0; }
+            .page { box-shadow: none; width: auto; min-height: auto; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <header>
+            <h1>Mahdiye Gholami</h1>
+            <p class="role">Junior Backend Developer — PHP / Laravel</p>
+            <div class="contact">
+                <span data-label="Phone">+98 993 196 2997</span>
+                <span data-label="Location">Qazvin, Iran</span>
+                <span data-label="Age">23</span>
+            </div>
+        </header>
+
+        <section>
+            <h2>Profile</h2>
+            <p class="summary">
+                Final-year Electrical Engineering student at Imam Khomeini International University (IKIU),
+                Qazvin, transitioning into backend web development. Self-motivated and detail-oriented, with
+                hands-on practice building Laravel applications. Actively developing skills in PHP, Laravel,
+                database design, and automated testing, and eager to grow within a professional development team.
+            </p>
+        </section>
+
+        <section>
+            <h2>Technical Skills</h2>
+            <dl class="skills-grid">
+                <dt>Languages</dt>
+                <dd>PHP 8, SQL, HTML, CSS, JavaScript (basics)</dd>
+
+                <dt>Frameworks</dt>
+                <dd>Laravel (Eloquent, migrations, validation, policies, Blade)</dd>
+
+                <dt>Databases</dt>
+                <dd>MySQL, SQLite</dd>
+
+                <dt>Testing</dt>
+                <dd>Pest, PHPUnit, Playwright (E2E)</dd>
+
+                <dt>Tooling</dt>
+                <dd>Composer, Git, Laravel Pint (code style), Rector, Vite, Tailwind CSS</dd>
+
+                <dt>Practices</dt>
+                <dd>REST routing, MVC architecture, authentication &amp; authorization, clean code conventions</dd>
+            </dl>
+        </section>
+
+        <section>
+            <h2>Projects</h2>
+
+            <div class="item">
+                <div class="item-title">
+                    <span>Idea Tracker Application</span>
+                    <span class="when">Personal Project</span>
+                </div>
+                <p class="item-sub">PHP · Laravel · MySQL/SQLite · Pest · Blade · Tailwind CSS</p>
+                <ul>
+                    <li>Built a full-stack Laravel app to create, track and manage ideas through different statuses.</li>
+                    <li>Implemented user authentication and session-based login/logout with secure route handling.</li>
+                    <li>Designed Eloquent models (Idea, Step) with relationships, enum casts and database migrations.</li>
+                    <li>Added form-request validation, authorization policies and controller-driven routing.</li>
+                    <li>Wrote unit and feature tests with Pest and enforced code style using Laravel Pint and Rector.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Education</h2>
+            <div class="item">
+                <div class="item-title">
+                    <span>B.Sc. Electrical Engineering</span>
+                    <span class="when">Final Year — in progress</span>
+                </div>
+                <p class="item-sub">Imam Khomeini International University (IKIU), Qazvin, Iran</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Languages</h2>
+            <div class="langs">
+                <span><b>English</b> — Intermediate</span>
+                <span><b>German</b> — Intermediate</span>
+                <span><b>Persian</b> — Native</span>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

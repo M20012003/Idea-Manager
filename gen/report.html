@@ -1,0 +1,836 @@
+<!DOCTYPE html><html lang="fa" dir="rtl"><head><meta charset="utf-8"/>
+<title>گزارش کار آزمایشگاه سیستم‌های دیجیتال — مهدیه غلامی</title>
+<style>@font-face{font-family:'Vazirmatn';font-style:normal;font-weight:400;src:url('file:///home/mahdiye-gh/idea/node_modules/@fontsource/vazirmatn/files/vazirmatn-arabic-400-normal.woff2') format('woff2');}
+@font-face{font-family:'Vazirmatn';font-style:normal;font-weight:500;src:url('file:///home/mahdiye-gh/idea/node_modules/@fontsource/vazirmatn/files/vazirmatn-arabic-500-normal.woff2') format('woff2');}
+@font-face{font-family:'Vazirmatn';font-style:normal;font-weight:700;src:url('file:///home/mahdiye-gh/idea/node_modules/@fontsource/vazirmatn/files/vazirmatn-arabic-700-normal.woff2') format('woff2');}
+@font-face{font-family:'Vazirmatn';font-style:normal;font-weight:900;src:url('file:///home/mahdiye-gh/idea/node_modules/@fontsource/vazirmatn/files/vazirmatn-arabic-900-normal.woff2') format('woff2');}
+/* ===== گزارش کار آزمایشگاه — استایل مدرن/تکنولوژی (RTL، فونت Vazirmatn) ===== */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #e5e7eb; }
+body {
+  font-family: 'Vazirmatn', 'Noto Sans Arabic', Tahoma, sans-serif;
+  color: #243044;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.page {
+  position: relative;
+  width: 210mm;
+  height: 297mm;
+  padding: 13mm 14mm 15mm;
+  margin: 0 auto 6mm;
+  background: #ffffff;
+  overflow: hidden;
+  font-size: 12.6px;
+  line-height: 1.9;
+  color: #243044;
+  box-shadow: 0 6px 26px rgba(15, 23, 42, .18);
+  display: flex;
+  flex-direction: column;
+}
+
+/* سربرگ و پابرگ هر صفحه */
+.runhead {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 8.6px; color: #64748b; letter-spacing: .2px;
+  padding-bottom: 4px; margin-bottom: 12px;
+  border-bottom: 1.4px solid #e2e8f0;
+}
+.runhead span:last-child { color: #0891b2; font-weight: 700; }
+.pagefoot {
+  position: absolute; bottom: 7mm; left: 14mm; right: 14mm;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 8.6px; color: #64748b;
+  padding-top: 5px; border-top: 1.4px solid #e2e8f0;
+}
+.pagefoot .grp {
+  background: linear-gradient(135deg, #0891b2, #4f46e5);
+  color: #fff; font-weight: 700; padding: 1px 9px; border-radius: 20px; font-size: 8.4px;
+}
+
+/* تیتر بخش‌ها */
+.sec-title {
+  display: flex; align-items: center; gap: 9px;
+  font-size: 17px; font-weight: 800; color: #0f172a;
+  margin: 4px 0 12px;
+}
+.sec-bar {
+  width: 6px; height: 22px; border-radius: 4px;
+  background: linear-gradient(180deg, #06b6d4, #4f46e5);
+  box-shadow: 0 0 0 3px rgba(6, 182, 212, .12);
+}
+.sub-title { font-size: 13.5px; font-weight: 700; color: #1e293b; margin: 14px 0 6px; }
+.para { margin: 0 0 11px; text-align: justify; }
+code {
+  font-family: 'DejaVu Sans Mono', 'Courier New', monospace;
+  background: #eef2ff; color: #4338ca; padding: 0 5px; border-radius: 5px;
+  font-size: .88em; direction: ltr; unicode-bidi: embed;
+}
+b { color: #0f172a; }
+
+/* جعبهٔ نکته */
+.callout {
+  display: flex; gap: 10px; align-items: flex-start;
+  background: linear-gradient(135deg, #ecfeff, #eef2ff);
+  border: 1px solid #a5f3fc; border-inline-start: 4px solid #06b6d4;
+  border-radius: 10px; padding: 11px 13px; margin: 14px 0 0;
+}
+.callout p { margin: 0; font-size: 12px; }
+.callout-i { font-size: 17px; line-height: 1.4; }
+
+/* ===== صفحهٔ جلد ===== */
+.cover { justify-content: space-between; padding: 14mm 16mm 14mm; }
+.cover::before {
+  content: ""; position: absolute; inset: 0;
+  background:
+    radial-gradient(1200px 380px at 100% -8%, rgba(6,182,212,.16), transparent 60%),
+    radial-gradient(900px 360px at 0% 108%, rgba(79,70,229,.16), transparent 60%);
+  pointer-events: none;
+}
+.cover > * { position: relative; z-index: 1; }
+.cover-top { text-align: center; }
+.uni-logo {
+  display: block; width: 96px; height: 96px; object-fit: contain;
+  margin: 0 auto 10px; filter: drop-shadow(0 4px 10px rgba(6, 130, 190, .18));
+}
+.bism { font-size: 13px; color: #0f766e; font-weight: 500; margin-bottom: 12px; }
+.uni { font-size: 22px; font-weight: 900; color: #0f172a; letter-spacing: .3px; }
+.faculty { font-size: 12.5px; color: #475569; margin-top: 5px; }
+.cover-mid { text-align: center; margin: 4mm 0; }
+.lab-badge {
+  width: 78px; height: 78px; margin: 0 auto 14px; border-radius: 20px;
+  display: grid; place-items: center; color: #fff;
+  background: linear-gradient(135deg, #06b6d4, #4f46e5);
+  box-shadow: 0 12px 30px rgba(79, 70, 229, .35);
+}
+.lab-no {
+  display: inline-block; font-size: 12px; font-weight: 700; color: #0891b2;
+  background: #ecfeff; border: 1px solid #a5f3fc; border-radius: 30px;
+  padding: 4px 18px; margin-bottom: 14px;
+}
+.cover-title {
+  font-size: 26px; font-weight: 900; line-height: 1.55; color: #0f172a; margin: 0 0 12px;
+}
+.cover-sub { font-size: 13px; color: #475569; max-width: 130mm; margin: 0 auto; }
+.cover-meta {
+  width: 132mm; margin: 0 auto; padding: 6mm 7mm;
+  border: 1.5px solid #e2e8f0; border-radius: 16px;
+  background: linear-gradient(180deg, #f8fafc, #ffffff);
+}
+.cm-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 7px 2px; border-bottom: 1px dashed #e2e8f0; font-size: 13px;
+}
+.cm-row:last-child { border-bottom: none; }
+.cm-k { color: #64748b; font-weight: 500; }
+.cm-v { color: #0f172a; font-weight: 800; }
+.cover-foot { text-align: center; color: #0891b2; font-weight: 700; font-size: 12px; }
+
+/* ===== چکیده، کلیدواژه و فهرست ===== */
+.kw-box {
+  background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px;
+  padding: 11px 13px; margin: 4px 0 22px; display: flex; flex-wrap: wrap; gap: 7px; align-items: center;
+}
+.kw-label { font-weight: 800; color: #0f172a; margin-inline-end: 4px; }
+.kw {
+  font-size: 11px; color: #4338ca; background: #eef2ff;
+  border: 1px solid #c7d2fe; border-radius: 20px; padding: 2px 11px;
+}
+.toc { list-style: none; margin: 0; padding: 0; }
+.toc li { display: flex; align-items: baseline; gap: 10px; padding: 8px 4px; border-bottom: 1px dashed #eef2f7; font-size: 13px; }
+.toc-num {
+  width: 24px; height: 24px; flex: 0 0 24px; border-radius: 8px; display: grid; place-items: center;
+  background: linear-gradient(135deg, #06b6d4, #4f46e5); color: #fff; font-weight: 800; font-size: 12px;
+}
+.toc-t { font-weight: 600; color: #1e293b; }
+.toc-dots { flex: 1; border-bottom: 1.5px dotted #cbd5e1; transform: translateY(-4px); }
+
+/* ===== شبکهٔ اهداف و سخت‌افزار ===== */
+.goal-grid, .hw-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 4px 0 6px; }
+.goal {
+  display: flex; gap: 10px; align-items: flex-start;
+  background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 11px 12px;
+}
+.goal p { margin: 0; font-size: 12px; }
+.goal-i {
+  flex: 0 0 26px; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center;
+  background: #ecfeff; color: #0891b2; font-weight: 900; border: 1px solid #a5f3fc;
+}
+.hw-card {
+  background: linear-gradient(180deg, #ffffff, #f8fafc);
+  border: 1px solid #e2e8f0; border-top: 3px solid #06b6d4; border-radius: 10px; padding: 10px 12px;
+}
+.hw-h { font-weight: 800; color: #0f172a; margin-bottom: 4px; font-size: 12.5px; }
+.hw-card p { margin: 0; font-size: 11.5px; color: #475569; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 6px; }
+.concept { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 11px 13px; }
+.concept-h { margin-bottom: 5px; }
+.concept-h code { background: #0f172a; color: #7dd3fc; font-size: 12px; padding: 2px 8px; }
+.concept p { margin: 0; font-size: 11.8px; color: #475569; }
+.steps { margin: 4px 0 6px; padding-inline-start: 20px; }
+.steps li { margin-bottom: 6px; }
+
+/* ===== صفحهٔ مسئله ===== */
+.prob-head { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.prob-chip {
+  flex: 0 0 auto; background: linear-gradient(135deg, #06b6d4, #4f46e5); color: #fff;
+  font-weight: 800; font-size: 13px; padding: 6px 16px; border-radius: 30px;
+  box-shadow: 0 6px 16px rgba(79, 70, 229, .28);
+}
+.prob-title { font-size: 17px; font-weight: 800; color: #0f172a; margin: 0; }
+.prob-body { display: grid; grid-template-columns: 1.55fr 1fr; gap: 13px; align-items: start; }
+.prob-main { display: flex; flex-direction: column; gap: 11px; }
+.block-tag {
+  display: inline-block; font-size: 10.5px; font-weight: 800; color: #0891b2;
+  background: #ecfeff; border: 1px solid #a5f3fc; border-radius: 6px; padding: 1px 9px; margin-bottom: 6px;
+}
+.statement { margin: 0; text-align: justify; font-size: 12px; }
+.explain-block { margin-top: 12px; }
+.explain { margin: 0; text-align: justify; font-size: 12.4px; line-height: 1.9; }
+.meta-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 10px 12px; margin-bottom: 10px; }
+.meta-title { font-weight: 800; color: #0f172a; font-size: 12.3px; margin-bottom: 6px; }
+table.pins { width: 100%; border-collapse: collapse; font-size: 11.2px; }
+.pins th { text-align: right; color: #64748b; font-weight: 600; padding: 4px 6px; border-bottom: 1px dashed #e2e8f0; white-space: nowrap; }
+.pins td { color: #1e293b; font-weight: 600; padding: 4px 6px; border-bottom: 1px dashed #e2e8f0; }
+.pins tr:last-child th, .pins tr:last-child td { border-bottom: none; }
+.notes ul { margin: 0; padding-inline-start: 17px; }
+.notes li { font-size: 11.2px; color: #334155; margin-bottom: 5px; text-align: justify; }
+
+/* تصویر شبیه‌سازی */
+.shot-wrap { margin: 10px 0 0; }
+.shot {
+  width: 100%; max-height: 205px; object-fit: contain; display: block;
+  border: 1px solid #cbd5e1; border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, .12); background: #f1f5f9;
+}
+.shots2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.shots2 .shot { max-height: 180px; }
+.shot-wrap figcaption { font-size: 10.5px; color: #64748b; text-align: center; margin-top: 6px; }
+
+/* ===== بلوک کد ===== */
+.code {
+  direction: ltr; text-align: left; border-radius: 10px; overflow: hidden;
+  background: #0f172a; border: 1px solid #1e293b; box-shadow: 0 4px 12px rgba(2, 6, 23, .25);
+}
+.code-pre {
+  margin: 0; padding: 9px 4px 9px 0;
+  column-count: var(--cols, 1); column-gap: 14px;
+  font-family: 'DejaVu Sans Mono', 'Courier New', monospace; font-size: 8.9px; line-height: 1.34;
+}
+.cl { display: flex; break-inside: avoid; padding: 0 8px; }
+.ln {
+  flex: 0 0 22px; text-align: right; color: #475569; user-select: none;
+  padding-inline-end: 8px; border-inline-end: 1px solid #1e293b; margin-inline-end: 9px;
+}
+.lc { color: #e2e8f0; white-space: pre-wrap; word-break: break-word; }
+.c-com { color: #64748b; font-style: italic; }
+.c-str { color: #86efac; }
+.c-kw  { color: #f472b6; font-weight: 700; }
+.c-fn  { color: #7dd3fc; }
+.c-num { color: #fbbf24; }
+
+/* ===== جدول نتایج ===== */
+.res-table { width: 100%; border-collapse: collapse; font-size: 11.6px; margin: 2px 0 8px; }
+.res-table thead th {
+  background: linear-gradient(135deg, #0f172a, #1e293b); color: #fff; font-weight: 700;
+  padding: 8px 9px; text-align: right;
+}
+.res-table td { padding: 7px 9px; border-bottom: 1px solid #eef2f7; text-align: right; }
+.res-table tbody tr:nth-child(even) { background: #f8fafc; }
+.res-table .ok { color: #059669; font-weight: 800; }
+
+/* ===== فهرست زیبا و منابع ===== */
+.nice-list { margin: 0 0 6px; padding: 0; list-style: none; }
+.nice-list li {
+  position: relative; padding: 7px 26px 7px 8px; margin-bottom: 6px;
+  background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px; font-size: 12px; text-align: justify;
+}
+.nice-list li::before {
+  content: "◆"; position: absolute; inset-inline-start: 9px; top: 7px; color: #06b6d4; font-size: 11px;
+}
+.refs { margin: 0; padding-inline-start: 22px; font-size: 12px; }
+.refs li { margin-bottom: 7px; }
+.end-mark {
+  margin-top: 16px; text-align: center; font-weight: 900; color: #4f46e5; font-size: 13px;
+}
+.end-mark::before, .end-mark::after { content: " ✦ "; color: #06b6d4; }
+</style></head><body>
+  <section class="page cover">
+    <div class="cover-top">
+      <img class="uni-logo" src="file:///home/mahdiye-gh/idea/gen/img/logo.png" alt="لوگوی دانشگاه بین‌المللی امام خمینی (ره)"/>
+      <div class="bism">بسم الله الرحمن الرحیم</div>
+      <div class="uni">دانشگاه بین‌المللی امام خمینی (ره)</div>
+      <div class="faculty">دانشکدهٔ فنی و مهندسی — گروه مهندسی برق</div>
+    </div>
+    <div class="cover-mid">
+      <div class="lab-badge">
+        <svg viewBox="0 0 24 24" width="46" height="46" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><rect x="7" y="7" width="10" height="10" rx="2"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/></svg>
+      </div>
+      <div class="lab-no">گزارش کار آزمایشگاه — شمارهٔ ۱</div>
+      <h1 class="cover-title">آشنایی با میکروکنترلر آردوینو و<br/>پیاده‌سازی مدارهای دیجیتال روی بردبورد</h1>
+      <div class="cover-sub">شبیه‌سازی و اجرای پروژه‌های LED، دکمه، سنسور نور و دما در محیط Tinkercad Circuits</div>
+    </div>
+    <div class="cover-meta">
+      <div class="cm-row"><span class="cm-k">نام دانشجو</span><span class="cm-v">مهدیه غلامی</span></div>
+      <div class="cm-row"><span class="cm-k">شمارهٔ دانشجویی</span><span class="cm-v">۴۰۱۶۱۲۳۰۵۸</span></div>
+      <div class="cm-row"><span class="cm-k">نام استاد</span><span class="cm-v">جناب آقای مهندس سلیمانی الموتی</span></div>
+      <div class="cm-row"><span class="cm-k">گروه</span><span class="cm-v">۶۰</span></div>
+      <div class="cm-row"><span class="cm-k">درس</span><span class="cm-v">آزمایشگاه سیستم‌های دیجیتال</span></div>
+      <div class="cm-row"><span class="cm-k">تاریخ</span><span class="cm-v">۷ آبان ۱۴۰۵</span></div>
+    </div>
+    <div class="cover-foot">۷ آبان ۱۴۰۵</div>
+  </section>
+  <section class="page">
+    <div class="runhead"><span>گزارش کار آزمایشگاه سیستم‌های دیجیتال</span><span>چکیده و فهرست</span></div>
+    <h2 class="sec-title"><span class="sec-bar"></span>چکیده</h2>
+    <p class="para">در این گزارش، آشنایی با میکروکنترلر آردوینو و پیاده‌سازی مدارهای دیجیتال ساده بر روی بردبورد بررسی شده است. ابتدا ساختار محیط توسعهٔ آردوینو شامل دو تابع اصلی <code>setup()</code> و <code>loop()</code> و فرمان‌های پایه مانند <code>pinMode</code>، <code>digitalWrite</code> و <code>digitalRead</code> معرفی می‌شود. سپس دوازده مسئلهٔ عملی شامل کنترل LED، کار با دکمه، LED چند رنگی (RGB)، سنسور نور (LDR) و سنسور دما طراحی و در محیط شبیه‌سازی Tinkercad Circuits پیاده‌سازی گردیده‌اند. نتایج به‌دست‌آمده نشان می‌دهد که تمامی مدارها مطابق با رفتار مورد انتظار و جدول صحت هر مسئله عمل می‌کنند و آردوینو به‌خوبی به‌عنوان کنترل‌کنندهٔ مرکزی مدارهای دیجیتال قابل استفاده است.</p>
+    <div class="kw-box">
+      <span class="kw-label">کلیدواژه‌ها:</span>
+      <span class="kw">آردوینو</span><span class="kw">بردبورد</span><span class="kw">LED</span><span class="kw">دکمهٔ فشاری</span><span class="kw">سنسور نور LDR</span><span class="kw">سنسور دما</span><span class="kw">Tinkercad</span><span class="kw">مدار دیجیتال</span>
+    </div>
+    <h2 class="sec-title"><span class="sec-bar"></span>فهرست مطالب</h2>
+    <ul class="toc"><li><span class="toc-num">۱</span><span class="toc-t">مقدمه</span><span class="toc-dots"></span></li><li><span class="toc-num">۲</span><span class="toc-t">هدف آزمایش</span><span class="toc-dots"></span></li><li><span class="toc-num">۳</span><span class="toc-t">مبانی و مفاهیم برنامه‌نویسی آردوینو</span><span class="toc-dots"></span></li><li><span class="toc-num">۴</span><span class="toc-t">معرفی برد آردوینو و بردبورد</span><span class="toc-dots"></span></li><li><span class="toc-num">۵</span><span class="toc-t">شرح قسمت عملی آزمایش</span><span class="toc-dots"></span></li><li><span class="toc-num">۶</span><span class="toc-t">حل المسائل (پروژه‌های ۱ تا ۱۲)</span><span class="toc-dots"></span></li><li><span class="toc-num">۷</span><span class="toc-t">نتایج شبیه‌سازی</span><span class="toc-dots"></span></li><li><span class="toc-num">۸</span><span class="toc-t">تحلیل نتایج</span><span class="toc-dots"></span></li><li><span class="toc-num">۹</span><span class="toc-t">نتیجه‌گیری</span><span class="toc-dots"></span></li><li><span class="toc-num">۱۰</span><span class="toc-t">پیشنهادات</span><span class="toc-dots"></span></li><li><span class="toc-num">۱۱</span><span class="toc-t">منابع</span><span class="toc-dots"></span></li></ul>
+    <div class="pagefoot"><span>مهدیه غلامی — ۴۰۱۶۱۲۳۰۵۸</span><span class="grp">گروه ۶۰</span></div>
+  </section>
+  <section class="page">
+    <div class="runhead"><span>گزارش کار آزمایشگاه سیستم‌های دیجیتال</span><span>مقدمه و هدف</span></div>
+    <h2 class="sec-title"><span class="sec-bar"></span>۱. مقدمه</h2>
+    <p class="para">امروزه میکروکنترلرها مغز متفکر بیشتر دستگاه‌های الکترونیکی هوشمند هستند. آردوینو به‌عنوان یکی از محبوب‌ترین پلتفرم‌های متن‌باز، امکان ساخت و کنترل مدارهای دیجیتال را بدون پیچیدگی‌های سخت‌افزاری فراهم می‌کند. در این آزمایش، با نحوهٔ کار با برد آردوینو، اتصال قطعات روی بردبورد و نوشتن برنامه‌های کنترلی آشنا می‌شویم.</p>
+    <p class="para">مدارهای دیجیتال بر پایهٔ منطق صفر و یک کار می‌کنند. با ترکیب ورودی‌ها (مانند دکمه و سنسور) و خروجی‌ها (مانند LED و بازر) می‌توان رفتارهای منطقی متنوعی را پیاده‌سازی کرد. آردوینو با ارائهٔ پین‌های ورودی/خروجی دیجیتال و آنالوگ، بستری ایده‌آل برای درک این مفاهیم در اختیار می‌گذارد.</p>
+    <h2 class="sec-title"><span class="sec-bar"></span>۲. هدف آزمایش</h2>
+    <div class="goal-grid">
+      <div class="goal"><span class="goal-i">۱</span><p>آشنایی با محیط توسعهٔ آردوینو و ساختار توابع <code>setup</code> و <code>loop</code>.</p></div>
+      <div class="goal"><span class="goal-i">۲</span><p>یادگیری فرمان‌های پایهٔ <code>pinMode</code>، <code>digitalWrite</code> و <code>digitalRead</code>.</p></div>
+      <div class="goal"><span class="goal-i">۳</span><p>کار با بردبورد و اتصال صحیح قطعات بدون لحیم‌کاری.</p></div>
+      <div class="goal"><span class="goal-i">۴</span><p>کنترل LED، دکمه، RGB و سنسورها و استفاده از متغیرها و پورت سریال.</p></div>
+    </div>
+    <div class="callout">
+      <span class="callout-i">💡</span>
+      <p>نکته: در زبان برنامه‌نویسی آردوینو، نوشتار حروف بزرگ و کوچک حساسیت دارد؛ بنابراین دستورات باید دقیقاً به‌صورت صحیح نوشته شوند.</p>
+    </div>
+    <div class="pagefoot"><span>مهدیه غلامی — ۴۰۱۶۱۲۳۰۵۸</span><span class="grp">گروه ۶۰</span></div>
+  </section>
+  <section class="page">
+    <div class="runhead"><span>گزارش کار آزمایشگاه سیستم‌های دیجیتال</span><span>مبانی و مفاهیم</span></div>
+    <h2 class="sec-title"><span class="sec-bar"></span>۳. مبانی و مفاهیم برنامه‌نویسی آردوینو</h2>
+    <div class="two-col">
+      <div class="concept">
+        <div class="concept-h"><code>void setup()</code></div>
+        <p>این بخش فقط یک‌بار در ابتدای اجرای برنامه اجرا می‌شود و برای پیکربندی اولیهٔ پین‌ها و شروع ارتباط سریال به کار می‌رود.</p>
+      </div>
+      <div class="concept">
+        <div class="concept-h"><code>void loop()</code></div>
+        <p>دستورات این بخش به‌صورت مداوم و بدون توقف تکرار می‌شوند؛ منطق اصلی برنامه در اینجا نوشته می‌شود.</p>
+      </div>
+      <div class="concept">
+        <div class="concept-h"><code>pinMode(pin, mode)</code></div>
+        <p>نوع کارکرد یک پین را مشخص می‌کند: <code>OUTPUT</code> برای خروجی و <code>INPUT</code> برای ورودی.</p>
+      </div>
+      <div class="concept">
+        <div class="concept-h"><code>digitalWrite / digitalRead</code></div>
+        <p>فرمان اول وضعیت پین خروجی را روی <code>HIGH</code> (۵ ولت) یا <code>LOW</code> (صفر ولت) می‌برد و فرمان دوم وضعیت پین ورودی را می‌خواند.</p>
+      </div>
+    </div>
+    <h3 class="sub-title">استفاده از متغیرها به‌جای مقادیر ثابت</h3>
+    <p class="para">در پروژه‌های بزرگ‌تر، به‌جای نوشتن مقادیر ثابت (مانند شمارهٔ پین یا زمان تأخیر) از متغیرها استفاده می‌کنیم؛ در این صورت تنها با تغییر مقدار متغیر، کل مدار به‌روزرسانی می‌شود. رعایت اصول نام‌گذاری مانند CamelCase و انتخاب نام‌های معنادار (مانند <code>LEDpin</code> و <code>waitTime</code>) خوانایی کد را افزایش می‌دهد.</p>
+    <div class="code" dir="ltr" style="--cols:1"><pre class="code-pre"><div class="cl"><span class="ln">1</span><span class="lc"><span class="c-kw">int</span> LEDpin = <span class="c-num">13</span>;      <span class="c-com">// نام معنادار با CamelCase</span></span></div><div class="cl"><span class="ln">2</span><span class="lc"><span class="c-kw">int</span> waitTime = <span class="c-num">1000</span>;  <span class="c-com">// زمان تأخیر بر حسب میلی‌ثانیه</span></span></div></pre></div>
+    <div class="pagefoot"><span>مهدیه غلامی — ۴۰۱۶۱۲۳۰۵۸</span><span class="grp">گروه ۶۰</span></div>
+  </section>
+  <section class="page">
+    <div class="runhead"><span>گزارش کار آزمایشگاه سیستم‌های دیجیتال</span><span>سخت‌افزار و روش کار</span></div>
+    <h2 class="sec-title"><span class="sec-bar"></span>۴. معرفی برد آردوینو و بردبورد</h2>
+    <p class="para">در برد آردوینو Uno، پین‌های ۰ تا ۱۳ برای ورودی و خروجی دیجیتال قابل استفاده هستند و پین ۱۳ به یک LED داخلی مجهز است. علاوه بر این، پین‌های آنالوگ A0 تا A5 برای خواندن سنسورها در دسترس‌اند.</p>
+    <div class="hw-grid">
+      <div class="hw-card"><div class="hw-h">پین‌های دیجیتال</div><p>پین‌های ۰ تا ۱۳؛ پین‌های دارای علامت PWM (~) قابلیت خروجی آنالوگ شبیه‌سازی‌شده را دارند.</p></div>
+      <div class="hw-card"><div class="hw-h">پین‌های آنالوگ</div><p>پین‌های A0 تا A5 برای خواندن مقادیر سنسورها مانند نور و دما به کار می‌روند.</p></div>
+      <div class="hw-card"><div class="hw-h">سوراخ‌های وسطی بردبورد</div><p>به‌صورت ستونی به هم متصل‌اند و برای قرار دادن پایه‌های قطعات استفاده می‌شوند.</p></div>
+      <div class="hw-card"><div class="hw-h">ریل‌های کناری (VCC/GND)</div><p>به‌صورت افقی متصل‌اند و برای اتصال منابع تغذیه و زمین به کار می‌روند.</p></div>
+    </div>
+    <h2 class="sec-title"><span class="sec-bar"></span>۵. شرح قسمت عملی آزمایش</h2>
+    <p class="para">به دلیل در دسترس نبودن فیزیکی برد، تمامی مدارها در محیط شبیه‌سازی آنلاین <b>Tinkercad Circuits</b> طراحی و اجرا شده‌اند. روش کار در هر مسئله به شرح زیر است:</p>
+    <ol class="steps">
+      <li>قرار دادن برد آردوینو Uno و بردبورد در محیط شبیه‌سازی.</li>
+      <li>افزودن قطعات (LED، مقاومت، دکمه، سنسور) و سیم‌کشی مطابق صورت مسئله.</li>
+      <li>نوشتن کد در ویرایشگر و تنظیم پین‌ها در تابع <code>setup</code>.</li>
+      <li>اجرای شبیه‌سازی با دکمهٔ Start و مشاهدهٔ رفتار مدار و Serial Monitor.</li>
+    </ol>
+    <div class="callout">
+      <span class="callout-i">⚡</span>
+      <p>نکتهٔ ایمنی: پایهٔ بلند LED (آند) به سمت ولتاژ مثبت و پایۀ کوتاه (کاتد) به سمت زمین متصل می‌شود و همیشه یک مقاومت محدودکنندهٔ جریان (معمولاً ۲۲۰ اهم) سری با LED قرار می‌گیرد.</p>
+    </div>
+    <div class="pagefoot"><span>مهدیه غلامی — ۴۰۱۶۱۲۳۰۵۸</span><span class="grp">گروه ۶۰</span></div>
+  </section>
+  <section class="page">
+    <div class="runhead"><span>گزارش کار آزمایشگاه سیستم‌های دیجیتال — آزمایش شمارهٔ ۱</span><span>آردوینو</span></div>
+    <div class="prob-head">
+      <div class="prob-chip">مسئلهٔ ۱</div>
+      <h2 class="prob-title">روشن و خاموش کردن LED با تأخیر یک‌ثانیه‌ای</h2>
+    </div>
+    <div class="prob-body">
+      <div class="prob-main">
+        <div class="block">
+          <div class="block-tag">صورت مسئله</div>
+          <p class="statement">یک مدار ساده طراحی کنید که یک LED را به پین ۱۳ آردوینو متصل کرده و با استفاده از کد آردوینو آن را به‌صورت متناوب روشن و خاموش کند؛ زمان هر حالت یک ثانیه باشد.</p>
+        </div>
+        <div class="block">
+          <div class="block-tag">کد آردوینو</div>
+          <div class="code" dir="ltr" style="--cols:1"><pre class="code-pre"><div class="cl"><span class="ln">1</span><span class="lc"><span class="c-kw">int</span> ledPin = <span class="c-num">13</span>;</span></div><div class="cl"><span class="ln">2</span><span class="lc">&nbsp;</span></div><div class="cl"><span class="ln">3</span><span class="lc"><span class="c-kw">void</span> <span class="c-fn">setup</span>() {</span></div><div class="cl"><span class="ln">4</span><span class="lc">  <span class="c-fn">pinMode</span>(ledPin, <span class="c-kw">OUTPUT</span>);</span></div><div class="cl"><span class="ln">5</span><span class="lc">}</span></div><div class="cl"><span class="ln">6</span><span class="lc">&nbsp;</span></div><div class="cl"><span class="ln">7</span><span class="lc"><span class="c-kw">void</span> <span class="c-fn">loop</span>() {</span></div><div class="cl"><span class="ln">8</span><span class="lc">  <span class="c-fn">digitalWrite</span>(ledPin, <span class="c-kw">HIGH</span>);</span></div><div class="cl"><span class="ln">9</span><span class="lc">  <span class="c-fn">delay</span>(<span class="c-num">1000</span>);</span></div><div class="cl"><span class="ln">10</span><span class="lc">  <span class="c-fn">digitalWrite</span>(ledPin, <span class="c-kw">LOW</span>);</span></div><div class="cl"><span class="ln">11</span><span class="lc">  <span class="c-fn">delay</span>(<span class="c-num">1000</span>);</span></div><div class="cl"><span class="ln">12</span><span class="lc">}</span></div></pre></div>
+        </div>
+      </div>
+      <aside class="prob-side">
+        <div class="notes">
+          <div class="meta-title">نکات کلیدی</div>
+          <ul><li>در تابع setup پین ۱۳ با فرمان pinMode به‌عنوان خروجی پیکربندی می‌شود.</li><li>دستور digitalWrite با مقدار HIGH ولتاژ ۵ ولت و با LOW صفر ولت تولید می‌کند.</li><li>تابع delay(1000) دقیقاً یک ثانیه مکث ایجاد می‌کند و این چرخه در loop تکرار می‌شود.</li></ul>
+        </div>
+      </aside>
+    </div>
+    <div class="block explain-block">
+      <div class="block-tag">توضیح عملکرد</div>
+      <p class="explain">ساده‌ترین الگوی کنترل خروجی دیجیتال در این مدار پیاده‌سازی شده است. پین ۱۳ که روی برد آردوینو به یک LED داخلی متصل است، در تابع setup با فرمان pinMode به‌عنوان خروجی پیکربندی می‌شود. سپس در حلقهٔ loop، پین با digitalWrite در سطح HIGH قرار گرفته و LED روشن می‌شود؛ پس از یک ثانیه مکث، همان پین روی LOW رفته و LED خاموش می‌گردد. چون این دستورهای چهارگانه به‌صورت پی‌در‌پی و بی‌پایان تکرار می‌شوند، LED هر ثانیه یک‌بار چشمک می‌زند. این پروژه نقطهٔ شروع درک چرخهٔ اجرای برنامهٔ آردوینو و مفهوم سطح منطقی ولتاژ است.</p>
+    </div>
+    <figure class="shot-wrap">
+      
+      <img class="shot" src="file:///home/mahdiye-gh/idea/gen/img/p01.png" alt="شبیه‌سازی مسئله ۱"/>
+      
+      <figcaption>شکل ۱: محیط شبیه‌سازی Tinkercad Circuits — چیدمان بردبورد، سیم‌کشی و کد اجراشده</figcaption>
+    </figure>
+    <div class="pagefoot"><span>مهدیه غلامی — ۴۰۱۶۱۲۳۰۵۸</span><span class="grp">گروه ۶۰</span></div>
+  </section>
+  <section class="page">
+    <div class="runhead"><span>گزارش کار آزمایشگاه سیستم‌های دیجیتال — آزمایش شمارهٔ ۱</span><span>آردوینو</span></div>
+    <div class="prob-head">
+      <div class="prob-chip">مسئلهٔ ۲</div>
+      <h2 class="prob-title">تغییر زمان روشن و خاموش بودن LED از طریق پورت سریال</h2>
+    </div>
+    <div class="prob-body">
+      <div class="prob-main">
+        <div class="block">
+          <div class="block-tag">صورت مسئله</div>
+          <p class="statement">مداری طراحی کنید که یک LED را به پین ۹ آردوینو متصل کرده و زمان روشن و خاموش شدن آن را به‌صورت متغیر، از طریق ورودی سریال (Serial) تغییر دهد.</p>
+        </div>
+        <div class="block">
+          <div class="block-tag">کد آردوینو</div>
+          <div class="code" dir="ltr" style="--cols:2"><pre class="code-pre"><div class="cl"><span class="ln">1</span><span class="lc"><span class="c-kw">const</span> <span class="c-kw">int</span> LEDpin = <span class="c-num">9</span>;</span></div><div class="cl"><span class="ln">2</span><span class="lc"><span class="c-kw">int</span> onTime = <span class="c-num">1000</span>;</span></div><div class="cl"><span class="ln">3</span><span class="lc"><span class="c-kw">int</span> offTime = <span class="c-num">1000</span>;</span></div><div class="cl"><span class="ln">4</span><span class="lc">&nbsp;</span></div><div class="cl"><span class="ln">5</span><span class="lc"><span class="c-kw">void</span> <span class="c-fn">setup</span>() {</span></div><div class="cl"><span class="ln">6</span><span class="lc">  <span class="c-fn">pinMode</span>(LEDpin, <span class="c-kw">OUTPUT</span>);</span></div><div class="cl"><span class="ln">7</span><span class="lc">  Serial.<span class="c-fn">begin</span>(<span class="c-num">9600</span>);</span></div><div class="cl"><span class="ln">8</span><span class="lc">  Serial.<span class="c-fn">println</span>(<span class="c-str">"Enter ON time and OFF time in ms:"</span>);</span></div><div class="cl"><span class="ln">9</span><span class="lc">  Serial.<span class="c-fn">println</span>(<span class="c-str">"Example: 500 1000"</span>);</span></div><div class="cl"><span class="ln">10</span><span class="lc">}</span></div><div class="cl"><span class="ln">11</span><span class="lc">&nbsp;</span></div><div class="cl"><span class="ln">12</span><span class="lc"><span class="c-kw">void</span> <span class="c-fn">loop</span>() {</span></div><div class="cl"><span class="ln">13</span><span class="lc">  <span class="c-kw">if</span> (Serial.<span class="c-fn">available</span>() &gt; <span class="c-num">0</span>) {</span></div><div class="cl"><span class="ln">14</span><span class="lc">    <span class="c-kw">int</span> newOnTime = Serial.<span class="c-fn">parseInt</span>();</span></div><div class="cl"><span class="ln">15</span><span class="lc">    <span class="c-kw">int</span> newOffTime = Serial.<span class="c-fn">parseInt</span>();</span></div><div class="cl"><span class="ln">16</span><span class="lc">    <span class="c-kw">if</span> (newOnTime &gt; <span class="c-num">0</span> &amp;&amp; newOffTime &gt; <span class="c-num">0</span>) {</span></div><div class="cl"><span class="ln">17</span><span class="lc">      onTime = newOnTime;</span></div><div class="cl"><span class="ln">18</span><span class="lc">      offTime = newOffTime;</span></div><div class="cl"><span class="ln">19</span><span class="lc">      Serial.<span class="c-fn">print</span>(<span class="c-str">"ON time: "</span>);</span></div><div class="cl"><span class="ln">20</span><span class="lc">      Serial.<span class="c-fn">println</span>(onTime);</span></div><div class="cl"><span class="ln">21</span><span class="lc">      Serial.<span class="c-fn">print</span>(<span class="c-str">"OFF time: "</span>);</span></div><div class="cl"><span class="ln">22</span><span class="lc">      Serial.<span class="c-fn">println</span>(offTime);</span></div><div class="cl"><span class="ln">23</span><span class="lc">    }</span></div><div class="cl"><span class="ln">24</span><span class="lc">    <span class="c-kw">while</span> (Serial.<span class="c-fn">available</span>() &gt; <span class="c-num">0</span>) {</span></div><div class="cl"><span class="ln">25</span><span class="lc">      Serial.<span class="c-fn">read</span>();</span></div><div class="cl"><span class="ln">26</span><span class="lc">    }</span></div><div class="cl"><span class="ln">27</span><span class="lc">  }</span></div><div class="cl"><span class="ln">28</span><span class="lc">  <span class="c-fn">digitalWrite</span>(LEDpin, <span class="c-kw">HIGH</span>);</span></div><div class="cl"><span class="ln">29</span><span class="lc">  <span class="c-fn">delay</span>(onTime);</span></div><div class="cl"><span class="ln">30</span><span class="lc">  <span class="c-fn">digitalWrite</span>(LEDpin, <span class="c-kw">LOW</span>);</span></div><div class="cl"><span class="ln">31</span><span class="lc">  <span class="c-fn">delay</span>(offTime);</span></div><div class="cl"><span class="ln">32</span><span class="lc">}</span></div></pre></div>
+        </div>
+      </div>
+      <aside class="prob-side">
+        <div class="notes">
+          <div class="meta-title">نکات کلیدی</div>
+          <ul><li>با Serial.available() بررسی می‌شود که داده‌ای از مانیتور سریال ارسال شده است یا خیر.</li><li>فرمان Serial.parseInt() دو عدد ورودی را به‌عنوان زمان روشن و خاموش شدن می‌خواند.</li><li>حلقهٔ while باقیماندهٔ بافر سریال را پاک‌سازی می‌کند تا خواندن بعدی درست انجام شود.</li></ul>
+        </div>
+      </aside>
+    </div>
+    <div class="block explain-block">
+      <div class="block-tag">توضیح عملکرد</div>
+      <p class="explain">در این مسئله، زمان‌های روشن و خاموش بودن LED از پیش ثابت نیستند، بلکه در زمان اجرا و از طریق پورت سریال قابل تغییرند. برد در تابع setup ارتباط سریال را با نرخ ۹۶۰۰ باز می‌کند و از کاربر می‌خواهد دو عدد (زمان روشن و زمان خاموش، بر حسب میلی‌ثانیه) وارد کند. در هر دور از loop ابتدا با Serial.available بررسی می‌شود که آیا داده‌ای در بافر موجود است؛ در صورت مثبت بودن، با دو فراخوانی Serial.parseInt آن دو عدد خوانده می‌شوند و پس از اطمینان از بزرگ‌تر بودنشان از صفر، در متغیرهای onTime و offTime ذخیره می‌گردند. سپس LED دقیقاً با همین مقادیر تازه چشمک می‌زند. حلقهٔ while نیز باقیماندهٔ بافر را پاک می‌کند تا خواندن بعدی با خطا انجام نشود.</p>
+    </div>
+    <figure class="shot-wrap">
+      <div class="shots2">
+      <img class="shot" src="file:///home/mahdiye-gh/idea/gen/img/p02a.png" alt="شبیه‌سازی مسئله ۲"/>
+      <img class="shot" src="file:///home/mahdiye-gh/idea/gen/img/p02b.png" alt="شبیه‌سازی مسئله ۲"/></div>
+      <figcaption>شکل ۲: محیط شبیه‌سازی Tinkercad Circuits — چیدمان بردبورد، سیم‌کشی و کد اجراشده</figcaption>
+    </figure>
+    <div class="pagefoot"><span>مهدیه غلامی — ۴۰۱۶۱۲۳۰۵۸</span><span class="grp">گروه ۶۰</span></div>
+  </section>
+  <section class="page">
+    <div class="runhead"><span>گزارش کار آزمایشگاه سیستم‌های دیجیتال — آزمایش شمارهٔ ۱</span><span>آردوینو</span></div>
+    <div class="prob-head">
+      <div class="prob-chip">مسئلهٔ ۳</div>
+      <h2 class="prob-title">کنترل LED با استفاده از یک دکمه</h2>
+    </div>
+    <div class="prob-body">
+      <div class="prob-main">
+        <div class="block">
+          <div class="block-tag">صورت مسئله</div>
+          <p class="statement">یک دکمه به پین ۲ آردوینو متصل کنید؛ به‌گونه‌ای که با فشار دادن دکمه، LED روشن و با رها کردن آن، LED خاموش شود.</p>
+        </div>
+        <div class="block">
+          <div class="block-tag">کد آردوینو</div>
+          <div class="code" dir="ltr" style="--cols:2"><pre class="code-pre"><div class="cl"><span class="ln">1</span><span class="lc"><span class="c-kw">int</span> ledPin = <span class="c-num">13</span>;</span></div><div class="cl"><span class="ln">2</span><span class="lc"><span class="c-kw">int</span> buttonPin = <span class="c-num">2</span>;</span></div><div class="cl"><span class="ln">3</span><span class="lc"><span class="c-kw">int</span> buttonState = <span class="c-num">0</span>;</span></div><div class="cl"><span class="ln">4</span><span class="lc">&nbsp;</span></div><div class="cl"><span class="ln">5</span><span class="lc"><span class="c-kw">void</span> <span class="c-fn">setup</span>() {</span></div><div class="cl"><span class="ln">6</span><span class="lc">  <span class="c-fn">pinMode</span>(ledPin, <span class="c-kw">OUTPUT</span>);</span></div><div class="cl"><span class="ln">7</span><span class="lc">  <span class="c-fn">pinMode</span>(buttonPin, <span class="c-kw">INPUT</span>);</span></div><div class="cl"><span class="ln">8</span><span class="lc">}</span></div><div class="cl"><span class="ln">9</span><span class="lc">&nbsp;</span></div><div class="cl"><span class="ln">10</span><span class="lc"><span class="c-kw">void</span> <span class="c-fn">loop</span>() {</span></div><div class="cl"><span class="ln">11</span><span class="lc">  buttonState = <span class="c-fn">digitalRead</span>(buttonPin);</span></div><div class="cl"><span class="ln">12</span><span class="lc">  <span class="c-kw">if</span> (buttonState == <span class="c-kw">HIGH</span>) {</span></div><div class="cl"><span class="ln">13</span><span class="lc">    <span class="c-fn">digitalWrite</span>(ledPin, <span class="c-kw">HIGH</span>);</span></div><div class="cl"><span class="ln">14</span><span class="lc">  } <span class="c-kw">else</span> {</span></div><div class="cl"><span class="ln">15</span><span class="lc">    <span class="c-fn">digitalWrite</span>(ledPin, <span class="c-kw">LOW</span>);</span></div><div class="cl"><span class="ln">16</span><span class="lc">  }</span></div><div class="cl"><span class="ln">17</span><span class="lc">}</span></div></pre></div>
+        </div>
+      </div>
+      <aside class="prob-side">
+        <div class="notes">
+          <div class="meta-title">نکات کلیدی</div>
+          <ul><li>دستور digitalRead وضعیت منطقی پین دکمه را می‌خواند و در متغیر buttonState ذخیره می‌کند.</li><li>در این پیاده‌سازی مستقیم، LED آینه‌وار وضعیت دکمه را نشان می‌دهد.</li><li>برای اطمینان از رفتار صحیح، معمولاً یک مقاومت پول‌داون روی خط دکمه در نظر گرفته می‌شود.</li></ul>
+        </div>
+      </aside>
+    </div>
+    <div class="block explain-block">
+      <div class="block-tag">توضیح عملکرد</div>
+      <p class="explain">این مدار یک کلید کنترلی ساده می‌سازد؛ دکمه به پین ۲ (ورودی) و LED به پین ۱۳ (خروجی) متصل شده‌اند. در هر دور از loop، وضعیت دکمه با digitalRead خوانده و در متغیر buttonState ذخیره می‌شود. اگر دکمه فشرده باشد و ورودی در سطح HIGH قرار گیرد، LED روشن می‌شود و در غیر این صورت خاموش می‌ماند. بنابراین رفتار LED آینه‌وارِ وضعیت دکمه است؛ به‌محض فشار دادن روشن و به‌محض رها کردن خاموش می‌گردد. در عمل برای اطمینان از سطح منطقی مشخص در حالت آزاد، یک مقاومت پول‌داون روی خط دکمه در نظر گرفته می‌شود.</p>
+    </div>
+    <figure class="shot-wrap">
+      
+      <img class="shot" src="file:///home/mahdiye-gh/idea/gen/img/p03.png" alt="شبیه‌سازی مسئله ۳"/>
+      
+      <figcaption>شکل ۳: محیط شبیه‌سازی Tinkercad Circuits — چیدمان بردبورد، سیم‌کشی و کد اجراشده</figcaption>
+    </figure>
+    <div class="pagefoot"><span>مهدیه غلامی — ۴۰۱۶۱۲۳۰۵۸</span><span class="grp">گروه ۶۰</span></div>
+  </section>
+  <section class="page">
+    <div class="runhead"><span>گزارش کار آزمایشگاه سیستم‌های دیجیتال — آزمایش شمارهٔ ۱</span><span>آردوینو</span></div>
+    <div class="prob-head">
+      <div class="prob-chip">مسئلهٔ ۴</div>
+      <h2 class="prob-title">نمایش وضعیت با دو LED و یک دکمه (Toggle)</h2>
+    </div>
+    <div class="prob-body">
+      <div class="prob-main">
+        <div class="block">
+          <div class="block-tag">صورت مسئله</div>
+          <p class="statement">مداری بسازید که از دو LED استفاده کند؛ یکی نشانهٔ «روشن» و دیگری نشانهٔ «خاموش». هر بار که دکمه فشرده می‌شود، وضعیت بین دو حالت جابه‌جا شود.</p>
+        </div>
+        <div class="block">
+          <div class="block-tag">کد آردوینو</div>
+          <div class="code" dir="ltr" style="--cols:2"><pre class="code-pre"><div class="cl"><span class="ln">1</span><span class="lc"><span class="c-kw">const</span> <span class="c-kw">int</span> redLED = <span class="c-num">2</span>;</span></div><div class="cl"><span class="ln">2</span><span class="lc"><span class="c-kw">const</span> <span class="c-kw">int</span> greenLED = <span class="c-num">3</span>;</span></div><div class="cl"><span class="ln">3</span><span class="lc"><span class="c-kw">const</span> <span class="c-kw">int</span> buttonPin = <span class="c-num">4</span>;</span></div><div class="cl"><span class="ln">4</span><span class="lc"><span class="c-kw">int</span> state = <span class="c-num">0</span>;</span></div><div class="cl"><span class="ln">5</span><span class="lc"><span class="c-kw">int</span> lastButtonState = <span class="c-kw">HIGH</span>;</span></div><div class="cl"><span class="ln">6</span><span class="lc">&nbsp;</span></div><div class="cl"><span class="ln">7</span><span class="lc"><span class="c-kw">void</span> <span class="c-fn">setup</span>() {</span></div><div class="cl"><span class="ln">8</span><span class="lc">  <span class="c-fn">pinMode</span>(redLED, <span class="c-kw">OUTPUT</span>);</span></div><div class="cl"><span class="ln">9</span><span class="lc">  <span class="c-fn">pinMode</span>(greenLED, <span class="c-kw">OUTPUT</span>);</span></div><div class="cl"><span class="ln">10</span><span class="lc">  <span class="c-fn">pinMode</span>(buttonPin, <span class="c-kw">INPUT_PULLUP</span>);</span></div><div class="cl"><span class="ln">11</span><span class="lc">  <span class="c-fn">digitalWrite</span>(redLED, <span class="c-kw">LOW</span>);</span></div><div class="cl"><span class="ln">12</span><span class="lc">  <span class="c-fn">digitalWrite</span>(greenLED, <span class="c-kw">HIGH</span>);</span></div><div class="cl"><span class="ln">13</span><span class="lc">}</span></div><div class="cl"><span class="ln">14</span><span class="lc">&nbsp;</span></div><div class="cl"><span class="ln">15</span><span class="lc"><span class="c-kw">void</span> <span class="c-fn">loop</span>() {</span></div><div class="cl"><span class="ln">16</span><span class="lc">  <span class="c-kw">int</span> buttonState = <span class="c-fn">digitalRead</span>(buttonPin);</span></div><div class="cl"><span class="ln">17</span><span class="lc">  <span class="c-kw">if</span> (buttonState == <span class="c-kw">LOW</span> &amp;&amp; lastButtonState == <span class="c-kw">HIGH</span>) {</span></div><div class="cl"><span class="ln">18</span><span class="lc">    state = !state;</span></div><div class="cl"><span class="ln">19</span><span class="lc">    <span class="c-kw">if</span> (state == <span class="c-num">1</span>) {</span></div><div class="cl"><span class="ln">20</span><span class="lc">      <span class="c-fn">digitalWrite</span>(redLED, <span class="c-kw">HIGH</span>);</span></div><div class="cl"><span class="ln">21</span><span class="lc">      <span class="c-fn">digitalWrite</span>(greenLED, <span class="c-kw">LOW</span>);</span></div><div class="cl"><span class="ln">22</span><span class="lc">    } <span class="c-kw">else</span> {</span></div><div class="cl"><span class="ln">23</span><span class="lc">      <span class="c-fn">digitalWrite</span>(redLED, <span class="c-kw">LOW</span>);</span></div><div class="cl"><span class="ln">24</span><span class="lc">      <span class="c-fn">digitalWrite</span>(greenLED, <span class="c-kw">HIGH</span>);</span></div><div class="cl"><span class="ln">25</span><span class="lc">    }</span></div><div class="cl"><span class="ln">26</span><span class="lc">    <span class="c-fn">delay</span>(<span class="c-num">50</span>);</span></div><div class="cl"><span class="ln">27</span><span class="lc">  }</span></div><div class="cl"><span class="ln">28</span><span class="lc">  lastButtonState = buttonState;</span></div><div class="cl"><span class="ln">29</span><span class="lc">}</span></div></pre></div>
+        </div>
+      </div>
+      <aside class="prob-side">
+        <div class="notes">
+          <div class="meta-title">نکات کلیدی</div>
+          <ul><li>با INPUT_PULLUP، حالت عادی دکمه HIGH و حالت فشرده LOW است.</li><li>شرط buttonState == LOW && lastButtonState == HIGH لبهٔ افت ولتاژ (فشار دکمه) را تشخیص می‌دهد.</li><li>دستور delay(50) برای حذف پرش‌های مکانیکی دکمه (Debounce) به کار رفته است.</li></ul>
+        </div>
+      </aside>
+    </div>
+    <div class="block explain-block">
+      <div class="block-tag">توضیح عملکرد</div>
+      <p class="explain">در این پروژه دکمه نقش یک کلید تعویض‌کننده (Toggle) را دارد: به‌جای آن‌که LED فقط هنگام فشار دادن روشن بماند، هر بار فشردن دکمه وضعیت را بین دو حالت جابه‌جا می‌کند. دو LED قرمز و سبز نشانهٔ دو وضعیت «روشن» و «خاموش» هستند. نکتهٔ کلیدی، تشخیص لحظهٔ فشار دادن (نه وضعیت فشرده‌بودن) است؛ به همین دلیل وضعیت فعلی دکمه با وضعیت پیشین (lastButtonState) مقایسه می‌شود و تنها در «لبهٔ» تغییر، متغیر state معکوس می‌گردد. با پیکربندی INPUT_PULLUP حالت عادی دکمه HIGH و حالت فشرده LOW است و تأخیر ۵۰ میلی‌ثانیه‌ای پرش‌های مکانیکی کلید را حذف می‌کند.</p>
+    </div>
+    <figure class="shot-wrap">
+      
+      <img class="shot" src="file:///home/mahdiye-gh/idea/gen/img/p04.png" alt="شبیه‌سازی مسئله ۴"/>
+      
+      <figcaption>شکل ۴: محیط شبیه‌سازی Tinkercad Circuits — چیدمان بردبورد، سیم‌کشی و کد اجراشده</figcaption>
+    </figure>
+    <div class="pagefoot"><span>مهدیه غلامی — ۴۰۱۶۱۲۳۰۵۸</span><span class="grp">گروه ۶۰</span></div>
+  </section>
+  <section class="page">
+    <div class="runhead"><span>گزارش کار آزمایشگاه سیستم‌های دیجیتال — آزمایش شمارهٔ ۱</span><span>آردوینو</span></div>
+    <div class="prob-head">
+      <div class="prob-chip">مسئلهٔ ۵</div>
+      <h2 class="prob-title">چشمک‌زن متناوب با دو LED</h2>
+    </div>
+    <div class="prob-body">
+      <div class="prob-main">
+        <div class="block">
+          <div class="block-tag">صورت مسئله</div>
+          <p class="statement">مداری بسازید که در آن دو LED به‌طور متناوب روشن و خاموش شوند (یکی روشن و دیگری خاموش و بالعکس)؛ مدت زمان روشن بودن هر LED یک ثانیه باشد.</p>
+        </div>
+        <div class="block">
+          <div class="block-tag">کد آردوینو</div>
+          <div class="code" dir="ltr" style="--cols:2"><pre class="code-pre"><div class="cl"><span class="ln">1</span><span class="lc"><span class="c-kw">int</span> LED1 = <span class="c-num">2</span>;</span></div><div class="cl"><span class="ln">2</span><span class="lc"><span class="c-kw">int</span> LED2 = <span class="c-num">3</span>;</span></div><div class="cl"><span class="ln">3</span><span class="lc">&nbsp;</span></div><div class="cl"><span class="ln">4</span><span class="lc"><span class="c-kw">void</span> <span class="c-fn">setup</span>() {</span></div><div class="cl"><span class="ln">5</span><span class="lc">  <span class="c-fn">pinMode</span>(LED1, <span class="c-kw">OUTPUT</span>);</span></div><div class="cl"><span class="ln">6</span><span class="lc">  <span class="c-fn">pinMode</span>(LED2, <span class="c-kw">OUTPUT</span>);</span></div><div class="cl"><span class="ln">7</span><span class="lc">}</span></div><div class="cl"><span class="ln">8</span><span class="lc">&nbsp;</span></div><div class="cl"><span class="ln">9</span><span class="lc"><span class="c-kw">void</span> <span class="c-fn">loop</span>() {</span></div><div class="cl"><span class="ln">10</span><span class="lc">  <span class="c-fn">digitalWrite</span>(LED1, <span class="c-kw">HIGH</span>);</span></div><div class="cl"><span class="ln">11</span><span class="lc">  <span class="c-fn">digitalWrite</span>(LED2, <span class="c-kw">LOW</span>);</span></div><div class="cl"><span class="ln">12</span><span class="lc">  <span class="c-fn">delay</span>(<span class="c-num">1000</span>);</span></div><div class="cl"><span class="ln">13</span><span class="lc">&nbsp;</span></div><div class="cl"><span class="ln">14</span><span class="lc">  <span class="c-fn">digitalWrite</span>(LED1, <span class="c-kw">LOW</span>);</span></div><div class="cl"><span class="ln">15</span><span class="lc">  <span class="c-fn">digitalWrite</span>(LED2, <span class="c-kw">HIGH</span>);</span></div><div class="cl"><span class="ln">16</span><span class="lc">  <span class="c-fn">delay</span>(<span class="c-num">1000</span>);</span></div><div class="cl"><span class="ln">17</span><span class="lc">}</span></div></pre></div>
+        </div>
+      </div>
+      <aside class="prob-side">
+        <div class="notes">
+          <div class="meta-title">نکات کلیدی</div>
+          <ul><li>در نیم‌چرخهٔ اول، LED1 روشن و LED2 خاموش می‌شود و پس از یک ثانیه حالت معکوس می‌گردد.</li><li>این رفتار مکمل، پایهٔ ساخت نشانگرهای وضعيت و مدارهای چشمکی دو فاز است.</li></ul>
+        </div>
+      </aside>
+    </div>
+    <div class="block explain-block">
+      <div class="block-tag">توضیح عملکرد</div>
+      <p class="explain">این مدار دو LED را به‌صورت مکمل و یک‌درمیان روشن می‌کند. در نیم‌چرخهٔ نخست LED1 روشن و LED2 خاموش می‌شود و به مدت یک ثانیه در همین حالت می‌ماند؛ سپس در نیم‌چرخهٔ دوم جای دو LED عوض می‌شود. چون در هر لحظه همیشه یکی روشن و دیگری خاموش است، الگوی چشمکی دوفازی ایجاد می‌شود که پایهٔ بسیاری از نشانگرها، تابلوها و مدارهای زمان‌بندی دیجیتال به شمار می‌رود.</p>
+    </div>
+    <figure class="shot-wrap">
+      
+      <img class="shot" src="file:///home/mahdiye-gh/idea/gen/img/p05.png" alt="شبیه‌سازی مسئله ۵"/>
+      
+      <figcaption>شکل ۵: محیط شبیه‌سازی Tinkercad Circuits — چیدمان بردبورد، سیم‌کشی و کد اجراشده</figcaption>
+    </figure>
+    <div class="pagefoot"><span>مهدیه غلامی — ۴۰۱۶۱۲۳۰۵۸</span><span class="grp">گروه ۶۰</span></div>
+  </section>
+  <section class="page">
+    <div class="runhead"><span>گزارش کار آزمایشگاه سیستم‌های دیجیتال — آزمایش شمارهٔ ۱</span><span>آردوینو</span></div>
+    <div class="prob-head">
+      <div class="prob-chip">مسئلهٔ ۶</div>
+      <h2 class="prob-title">محافظت از LED با مقاومت و زمان‌بندی دو ثانیه</h2>
+    </div>
+    <div class="prob-body">
+      <div class="prob-main">
+        <div class="block">
+          <div class="block-tag">صورت مسئله</div>
+          <p class="statement">مداری طراحی کنید که از یک LED و یک مقاومت ۲۲۰ اهم برای محافظت استفاده کند؛ کد به‌گونه‌ای باشد که LED به مدت دو ثانیه روشن و سپس خاموش شود.</p>
+        </div>
+        <div class="block">
+          <div class="block-tag">کد آردوینو</div>
+          <div class="code" dir="ltr" style="--cols:1"><pre class="code-pre"><div class="cl"><span class="ln">1</span><span class="lc"><span class="c-kw">int</span> LED = <span class="c-num">3</span>;</span></div><div class="cl"><span class="ln">2</span><span class="lc">&nbsp;</span></div><div class="cl"><span class="ln">3</span><span class="lc"><span class="c-kw">void</span> <span class="c-fn">setup</span>() {</span></div><div class="cl"><span class="ln">4</span><span class="lc">  <span class="c-fn">pinMode</span>(LED, <span class="c-kw">OUTPUT</span>);</span></div><div class="cl"><span class="ln">5</span><span class="lc">}</span></div><div class="cl"><span class="ln">6</span><span class="lc">&nbsp;</span></div><div class="cl"><span class="ln">7</span><span class="lc"><span class="c-kw">void</span> <span class="c-fn">loop</span>() {</span></div><div class="cl"><span class="ln">8</span><span class="lc">  <span class="c-fn">digitalWrite</span>(LED, <span class="c-kw">HIGH</span>);</span></div><div class="cl"><span class="ln">9</span><span class="lc">  <span class="c-fn">delay</span>(<span class="c-num">2000</span>);</span></div><div class="cl"><span class="ln">10</span><span class="lc">  <span class="c-fn">digitalWrite</span>(LED, <span class="c-kw">LOW</span>);</span></div><div class="cl"><span class="ln">11</span><span class="lc">  <span class="c-fn">delay</span>(<span class="c-num">2000</span>);</span></div><div class="cl"><span class="ln">12</span><span class="lc">}</span></div></pre></div>
+        </div>
+      </div>
+      <aside class="prob-side">
+        <div class="notes">
+          <div class="meta-title">نکات کلیدی</div>
+          <ul><li>مقاومت ۲۲۰ اهم جریان عبوری از LED را محدود کرده و از سوختن آن جلوگیری می‌کند.</li><li>محاسبهٔ ساده: R = (۵ − ۲)/۰٫۰۲ ≈ ۱۵۰ اهم؛ مقدار ۲۲۰ اهم حاشیهٔ اطمینان ایجاد می‌کند.</li></ul>
+        </div>
+      </aside>
+    </div>
+    <div class="block explain-block">
+      <div class="block-tag">توضیح عملکرد</div>
+      <p class="explain">این مسئله دو هدف را هم‌زمان دنبال می‌کند: محافظت از LED و زمان‌بندی دقیق. LED از پین ۳ کنترل می‌شود و یک مقاومت ۲۲۰ اهم به‌صورت سری با آن قرار می‌گیرد تا جریان از حد مجاز (معمولاً حدود ۲۰ میلی‌آمپر) فراتر نرود و LED آسیب نبیند. در کد، LED به مدت دو ثانیه روشن و سپس دو ثانیه خاموش می‌ماند. مقدار مقاومت از قانون اهم به‌دست می‌آید: با ولتاژ تغذیهٔ ۵ ولت، افت ولتاژ LED حدود ۲ ولت و جریان ۲۰ میلی‌آمپر، مقاومت مطلوب نزدیک به ۱۵۰ اهم است و انتخاب ۲۲۰ اهم حاشیهٔ اطمینان ایجاد می‌کند.</p>
+    </div>
+    <figure class="shot-wrap">
+      
+      <img class="shot" src="file:///home/mahdiye-gh/idea/gen/img/p06.png" alt="شبیه‌سازی مسئله ۶"/>
+      
+      <figcaption>شکل ۶: محیط شبیه‌سازی Tinkercad Circuits — چیدمان بردبورد، سیم‌کشی و کد اجراشده</figcaption>
+    </figure>
+    <div class="pagefoot"><span>مهدیه غلامی — ۴۰۱۶۱۲۳۰۵۸</span><span class="grp">گروه ۶۰</span></div>
+  </section>
+  <section class="page">
+    <div class="runhead"><span>گزارش کار آزمایشگاه سیستم‌های دیجیتال — آزمایش شمارهٔ ۱</span><span>آردوینو</span></div>
+    <div class="prob-head">
+      <div class="prob-chip">مسئلهٔ ۷</div>
+      <h2 class="prob-title">کنترل LED چند رنگی (RGB)</h2>
+    </div>
+    <div class="prob-body">
+      <div class="prob-main">
+        <div class="block">
+          <div class="block-tag">صورت مسئله</div>
+          <p class="statement">یک LED RGB به آردوینو وصل کنید و با استفاده از پین‌های مناسب، رنگ‌های مختلف را کنترل نمایید؛ به‌ترتیب قرمز، سپس سبز و بعد آبی.</p>
+        </div>
+        <div class="block">
+          <div class="block-tag">کد آردوینو</div>
+          <div class="code" dir="ltr" style="--cols:2"><pre class="code-pre"><div class="cl"><span class="ln">1</span><span class="lc"><span class="c-kw">int</span> redPin = <span class="c-num">9</span>;</span></div><div class="cl"><span class="ln">2</span><span class="lc"><span class="c-kw">int</span> greenPin = <span class="c-num">10</span>;</span></div><div class="cl"><span class="ln">3</span><span class="lc"><span class="c-kw">int</span> bluePin = <span class="c-num">11</span>;</span></div><div class="cl"><span class="ln">4</span><span class="lc">&nbsp;</span></div><div class="cl"><span class="ln">5</span><span class="lc"><span class="c-kw">void</span> <span class="c-fn">setup</span>() {</span></div><div class="cl"><span class="ln">6</span><span class="lc">  <span class="c-fn">pinMode</span>(redPin, <span class="c-kw">OUTPUT</span>);</span></div><div class="cl"><span class="ln">7</span><span class="lc">  <span class="c-fn">pinMode</span>(greenPin, <span class="c-kw">OUTPUT</span>);</span></div><div class="cl"><span class="ln">8</span><span class="lc">  <span class="c-fn">pinMode</span>(bluePin, <span class="c-kw">OUTPUT</span>);</span></div><div class="cl"><span class="ln">9</span><span class="lc">}</span></div><div class="cl"><span class="ln">10</span><span class="lc">&nbsp;</span></div><div class="cl"><span class="ln">11</span><span class="lc"><span class="c-kw">void</span> <span class="c-fn">loop</span>() {</span></div><div class="cl"><span class="ln">12</span><span class="lc">  <span class="c-com">// Red</span></span></div><div class="cl"><span class="ln">13</span><span class="lc">  <span class="c-fn">digitalWrite</span>(redPin, <span class="c-kw">HIGH</span>);</span></div><div class="cl"><span class="ln">14</span><span class="lc">  <span class="c-fn">digitalWrite</span>(greenPin, <span class="c-kw">LOW</span>);</span></div><div class="cl"><span class="ln">15</span><span class="lc">  <span class="c-fn">digitalWrite</span>(bluePin, <span class="c-kw">LOW</span>);</span></div><div class="cl"><span class="ln">16</span><span class="lc">  <span class="c-fn">delay</span>(<span class="c-num">1000</span>);</span></div><div class="cl"><span class="ln">17</span><span class="lc">  <span class="c-com">// Green</span></span></div><div class="cl"><span class="ln">18</span><span class="lc">  <span class="c-fn">digitalWrite</span>(redPin, <span class="c-kw">LOW</span>);</span></div><div class="cl"><span class="ln">19</span><span class="lc">  <span class="c-fn">digitalWrite</span>(greenPin, <span class="c-kw">HIGH</span>);</span></div><div class="cl"><span class="ln">20</span><span class="lc">  <span class="c-fn">digitalWrite</span>(bluePin, <span class="c-kw">LOW</span>);</span></div><div class="cl"><span class="ln">21</span><span class="lc">  <span class="c-fn">delay</span>(<span class="c-num">1000</span>);</span></div><div class="cl"><span class="ln">22</span><span class="lc">  <span class="c-com">// Blue</span></span></div><div class="cl"><span class="ln">23</span><span class="lc">  <span class="c-fn">digitalWrite</span>(redPin, <span class="c-kw">LOW</span>);</span></div><div class="cl"><span class="ln">24</span><span class="lc">  <span class="c-fn">digitalWrite</span>(greenPin, <span class="c-kw">LOW</span>);</span></div><div class="cl"><span class="ln">25</span><span class="lc">  <span class="c-fn">digitalWrite</span>(bluePin, <span class="c-kw">HIGH</span>);</span></div><div class="cl"><span class="ln">26</span><span class="lc">  <span class="c-fn">delay</span>(<span class="c-num">1000</span>);</span></div><div class="cl"><span class="ln">27</span><span class="lc">}</span></div></pre></div>
+        </div>
+      </div>
+      <aside class="prob-side">
+        <div class="notes">
+          <div class="meta-title">نکات کلیدی</div>
+          <ul><li>هر رنگ LED RGB از یک کاتد مشترک و سه پایهٔ جداگانه تشکیل شده است.</li><li>با فعال‌سازی هم‌زمان ترکیب این سه پایه می‌توان رنگ‌های ثانویه (زرد، فیروزه‌ای، ارغوانی) تولید کرد.</li></ul>
+        </div>
+      </aside>
+    </div>
+    <div class="block explain-block">
+      <div class="block-tag">توضیح عملکرد</div>
+      <p class="explain">LED RGB از سه بخش نوردهندهٔ قرمز، سبز و آبی تشکیل شده که هر یک با یک پین جداگانه کنترل می‌شود. در این برنامه در هر مرحله فقط یکی از سه رنگ فعال می‌گردد: نخست قرمز، سپس سبز و در پایان آبی؛ هر رنگ به مدت یک ثانیه روشن می‌ماند. با توجه به اصل ترکیب جمعی (additive) رنگ‌ها، فعال‌کردن هم‌زمان دو یا سه پایه می‌تواند رنگ‌های ثانویه‌ای مانند زرد، فیروزه‌ای و ارغوانی را نیز تولید کند؛ بنابراین این مدار پایهٔ ساخت نمایشگرهای رنگی است.</p>
+    </div>
+    <figure class="shot-wrap">
+      
+      <img class="shot" src="file:///home/mahdiye-gh/idea/gen/img/p07.png" alt="شبیه‌سازی مسئله ۷"/>
+      
+      <figcaption>شکل ۷: محیط شبیه‌سازی Tinkercad Circuits — چیدمان بردبورد، سیم‌کشی و کد اجراشده</figcaption>
+    </figure>
+    <div class="pagefoot"><span>مهدیه غلامی — ۴۰۱۶۱۲۳۰۵۸</span><span class="grp">گروه ۶۰</span></div>
+  </section>
+  <section class="page">
+    <div class="runhead"><span>گزارش کار آزمایشگاه سیستم‌های دیجیتال — آزمایش شمارهٔ ۱</span><span>آردوینو</span></div>
+    <div class="prob-head">
+      <div class="prob-chip">مسئلهٔ ۸</div>
+      <h2 class="prob-title">چشمک‌زن با دو LED RGB</h2>
+    </div>
+    <div class="prob-body">
+      <div class="prob-main">
+        <div class="block">
+          <div class="block-tag">صورت مسئله</div>
+          <p class="statement">مداری طراحی کنید که دو LED RGB به‌طور متناوب چشمک بزنند (یکی قرمز و دیگری سبز)؛ زمان روشن بودن هر LED به‌صورت جداگانه تنظیم شود.</p>
+        </div>
+        <div class="block">
+          <div class="block-tag">کد آردوینو</div>
+          <div class="code" dir="ltr" style="--cols:2"><pre class="code-pre"><div class="cl"><span class="ln">1</span><span class="lc"><span class="c-kw">int</span> red1 = <span class="c-num">9</span>, green1 = <span class="c-num">11</span>, blue1 = <span class="c-num">10</span>;</span></div><div class="cl"><span class="ln">2</span><span class="lc"><span class="c-kw">int</span> red2 = <span class="c-num">3</span>, green2 = <span class="c-num">6</span>, blue2 = <span class="c-num">5</span>;</span></div><div class="cl"><span class="ln">3</span><span class="lc"><span class="c-kw">int</span> onTime1 = <span class="c-num">1000</span>;</span></div><div class="cl"><span class="ln">4</span><span class="lc"><span class="c-kw">int</span> onTime2 = <span class="c-num">1000</span>;</span></div><div class="cl"><span class="ln">5</span><span class="lc">&nbsp;</span></div><div class="cl"><span class="ln">6</span><span class="lc"><span class="c-kw">void</span> <span class="c-fn">setup</span>() {</span></div><div class="cl"><span class="ln">7</span><span class="lc">  <span class="c-fn">pinMode</span>(red1, <span class="c-kw">OUTPUT</span>);</span></div><div class="cl"><span class="ln">8</span><span class="lc">  <span class="c-fn">pinMode</span>(green1, <span class="c-kw">OUTPUT</span>);</span></div><div class="cl"><span class="ln">9</span><span class="lc">  <span class="c-fn">pinMode</span>(blue1, <span class="c-kw">OUTPUT</span>);</span></div><div class="cl"><span class="ln">10</span><span class="lc">  <span class="c-fn">pinMode</span>(red2, <span class="c-kw">OUTPUT</span>);</span></div><div class="cl"><span class="ln">11</span><span class="lc">  <span class="c-fn">pinMode</span>(green2, <span class="c-kw">OUTPUT</span>);</span></div><div class="cl"><span class="ln">12</span><span class="lc">  <span class="c-fn">pinMode</span>(blue2, <span class="c-kw">OUTPUT</span>);</span></div><div class="cl"><span class="ln">13</span><span class="lc">}</span></div><div class="cl"><span class="ln">14</span><span class="lc">&nbsp;</span></div><div class="cl"><span class="ln">15</span><span class="lc"><span class="c-kw">void</span> <span class="c-fn">loop</span>() {</span></div><div class="cl"><span class="ln">16</span><span class="lc">  <span class="c-com">// LED RGB اول: قرمز</span></span></div><div class="cl"><span class="ln">17</span><span class="lc">  <span class="c-fn">digitalWrite</span>(red1, <span class="c-kw">HIGH</span>);</span></div><div class="cl"><span class="ln">18</span><span class="lc">  <span class="c-fn">digitalWrite</span>(green1, <span class="c-kw">LOW</span>);</span></div><div class="cl"><span class="ln">19</span><span class="lc">  <span class="c-fn">digitalWrite</span>(blue1, <span class="c-kw">LOW</span>);</span></div><div class="cl"><span class="ln">20</span><span class="lc">  <span class="c-com">// LED RGB دوم: خاموش</span></span></div><div class="cl"><span class="ln">21</span><span class="lc">  <span class="c-fn">digitalWrite</span>(red2, <span class="c-kw">LOW</span>);</span></div><div class="cl"><span class="ln">22</span><span class="lc">  <span class="c-fn">digitalWrite</span>(green2, <span class="c-kw">LOW</span>);</span></div><div class="cl"><span class="ln">23</span><span class="lc">  <span class="c-fn">digitalWrite</span>(blue2, <span class="c-kw">LOW</span>);</span></div><div class="cl"><span class="ln">24</span><span class="lc">  <span class="c-fn">delay</span>(onTime1);</span></div><div class="cl"><span class="ln">25</span><span class="lc">  <span class="c-com">// LED RGB اول: خاموش</span></span></div><div class="cl"><span class="ln">26</span><span class="lc">  <span class="c-fn">digitalWrite</span>(red1, <span class="c-kw">LOW</span>);</span></div><div class="cl"><span class="ln">27</span><span class="lc">  <span class="c-fn">digitalWrite</span>(green1, <span class="c-kw">LOW</span>);</span></div><div class="cl"><span class="ln">28</span><span class="lc">  <span class="c-fn">digitalWrite</span>(blue1, <span class="c-kw">LOW</span>);</span></div><div class="cl"><span class="ln">29</span><span class="lc">  <span class="c-com">// LED RGB دوم: سبز</span></span></div><div class="cl"><span class="ln">30</span><span class="lc">  <span class="c-fn">digitalWrite</span>(red2, <span class="c-kw">LOW</span>);</span></div><div class="cl"><span class="ln">31</span><span class="lc">  <span class="c-fn">digitalWrite</span>(green2, <span class="c-kw">HIGH</span>);</span></div><div class="cl"><span class="ln">32</span><span class="lc">  <span class="c-fn">digitalWrite</span>(blue2, <span class="c-kw">LOW</span>);</span></div><div class="cl"><span class="ln">33</span><span class="lc">  <span class="c-fn">delay</span>(onTime2);</span></div><div class="cl"><span class="ln">34</span><span class="lc">}</span></div></pre></div>
+        </div>
+      </div>
+      <aside class="prob-side">
+        <div class="notes">
+          <div class="meta-title">نکات کلیدی</div>
+          <ul><li>با تفکیک زمان onTime1 و onTime2 می‌توان ریتم چشمک‌زن را به‌صورت مستقل تنظیم کرد.</li><li>این الگو پایهٔ ساخت تابلوهای روان و نشانگرهای چند رنگ است.</li></ul>
+        </div>
+      </aside>
+    </div>
+    <div class="block explain-block">
+      <div class="block-tag">توضیح عملکرد</div>
+      <p class="explain">این پروژه ترکیب دو مفهوم پیشین است: دو LED RGB که به‌صورت متناوب و مکمل چشمک می‌زنند. در گام نخست RGB اول روی قرمز روشن می‌شود در حالی‌که RGB دوم کاملاً خاموش است؛ پس از گذشت زمان onTime1 حالت برعکس می‌شود و این بار RGB دوم روی سبز روشن می‌گردد. با جدا در نظر گرفتن دو متغیر زمانی onTime1 و onTime2 می‌توان ریتم هر دو LED را به‌طور مستقل تنظیم کرد. این الگو در تابلوهای روان و سامانه‌های هشدار چندرنگ کاربرد فراوان دارد.</p>
+    </div>
+    <figure class="shot-wrap">
+      
+      <img class="shot" src="file:///home/mahdiye-gh/idea/gen/img/p08.png" alt="شبیه‌سازی مسئله ۸"/>
+      
+      <figcaption>شکل ۸: محیط شبیه‌سازی Tinkercad Circuits — چیدمان بردبورد، سیم‌کشی و کد اجراشده</figcaption>
+    </figure>
+    <div class="pagefoot"><span>مهدیه غلامی — ۴۰۱۶۱۲۳۰۵۸</span><span class="grp">گروه ۶۰</span></div>
+  </section>
+  <section class="page">
+    <div class="runhead"><span>گزارش کار آزمایشگاه سیستم‌های دیجیتال — آزمایش شمارهٔ ۱</span><span>آردوینو</span></div>
+    <div class="prob-head">
+      <div class="prob-chip">مسئلهٔ ۹</div>
+      <h2 class="prob-title">کنترل LED بر اساس سنسور دما</h2>
+    </div>
+    <div class="prob-body">
+      <div class="prob-main">
+        <div class="block">
+          <div class="block-tag">صورت مسئله</div>
+          <p class="statement">یک سنسور دما (مانند LM35/TMP36) به آردوینو وصل کنید؛ وقتی دمای محیط بالاتر از ۳۰ درجهٔ سلسیوس شد، LED قرمز روشن و در غیر این صورت LED سبز روشن باشد.</p>
+        </div>
+        <div class="block">
+          <div class="block-tag">کد آردوینو</div>
+          <div class="code" dir="ltr" style="--cols:2"><pre class="code-pre"><div class="cl"><span class="ln">1</span><span class="lc"><span class="c-kw">int</span> tempPin = A0;</span></div><div class="cl"><span class="ln">2</span><span class="lc"><span class="c-kw">int</span> redLED = <span class="c-num">8</span>;</span></div><div class="cl"><span class="ln">3</span><span class="lc"><span class="c-kw">int</span> greenLED = <span class="c-num">9</span>;</span></div><div class="cl"><span class="ln">4</span><span class="lc"><span class="c-kw">int</span> sensorValue;</span></div><div class="cl"><span class="ln">5</span><span class="lc"><span class="c-kw">float</span> voltage;</span></div><div class="cl"><span class="ln">6</span><span class="lc"><span class="c-kw">float</span> temperatureC;</span></div><div class="cl"><span class="ln">7</span><span class="lc">&nbsp;</span></div><div class="cl"><span class="ln">8</span><span class="lc"><span class="c-kw">void</span> <span class="c-fn">setup</span>() {</span></div><div class="cl"><span class="ln">9</span><span class="lc">  <span class="c-fn">pinMode</span>(redLED, <span class="c-kw">OUTPUT</span>);</span></div><div class="cl"><span class="ln">10</span><span class="lc">  <span class="c-fn">pinMode</span>(greenLED, <span class="c-kw">OUTPUT</span>);</span></div><div class="cl"><span class="ln">11</span><span class="lc">  Serial.<span class="c-fn">begin</span>(<span class="c-num">9600</span>);</span></div><div class="cl"><span class="ln">12</span><span class="lc">}</span></div><div class="cl"><span class="ln">13</span><span class="lc">&nbsp;</span></div><div class="cl"><span class="ln">14</span><span class="lc"><span class="c-kw">void</span> <span class="c-fn">loop</span>() {</span></div><div class="cl"><span class="ln">15</span><span class="lc">  sensorValue = <span class="c-fn">analogRead</span>(tempPin);</span></div><div class="cl"><span class="ln">16</span><span class="lc">  voltage = sensorValue * (<span class="c-num">5.0</span> / <span class="c-num">1023.0</span>);</span></div><div class="cl"><span class="ln">17</span><span class="lc">  temperatureC = voltage * <span class="c-num">100.0</span>;</span></div><div class="cl"><span class="ln">18</span><span class="lc">&nbsp;</span></div><div class="cl"><span class="ln">19</span><span class="lc">  Serial.<span class="c-fn">print</span>(<span class="c-str">"Temperature: "</span>);</span></div><div class="cl"><span class="ln">20</span><span class="lc">  Serial.<span class="c-fn">print</span>(temperatureC);</span></div><div class="cl"><span class="ln">21</span><span class="lc">  Serial.<span class="c-fn">println</span>(<span class="c-str">" C"</span>);</span></div><div class="cl"><span class="ln">22</span><span class="lc">&nbsp;</span></div><div class="cl"><span class="ln">23</span><span class="lc">  <span class="c-kw">if</span> (temperatureC &gt; <span class="c-num">30</span>) {</span></div><div class="cl"><span class="ln">24</span><span class="lc">    <span class="c-fn">digitalWrite</span>(redLED, <span class="c-kw">HIGH</span>);</span></div><div class="cl"><span class="ln">25</span><span class="lc">    <span class="c-fn">digitalWrite</span>(greenLED, <span class="c-kw">LOW</span>);</span></div><div class="cl"><span class="ln">26</span><span class="lc">  } <span class="c-kw">else</span> {</span></div><div class="cl"><span class="ln">27</span><span class="lc">    <span class="c-fn">digitalWrite</span>(redLED, <span class="c-kw">LOW</span>);</span></div><div class="cl"><span class="ln">28</span><span class="lc">    <span class="c-fn">digitalWrite</span>(greenLED, <span class="c-kw">HIGH</span>);</span></div><div class="cl"><span class="ln">29</span><span class="lc">  }</span></div><div class="cl"><span class="ln">30</span><span class="lc">  <span class="c-fn">delay</span>(<span class="c-num">1000</span>);</span></div><div class="cl"><span class="ln">31</span><span class="lc">}</span></div></pre></div>
+        </div>
+      </div>
+      <aside class="prob-side">
+        <div class="notes">
+          <div class="meta-title">نکات کلیدی</div>
+          <ul><li>مبدل آنالوگ به دیجیتال آردوینو ۱۰ بیت است؛ بنابراین analogRead مقداری بین ۰ تا ۱۰۲۳ برمی‌گرداند.</li><li>سنسورهای سری TMP/LM35 به ازای هر درجهٔ سلسیوس ۱۰ میلی‌ولت خروجی می‌دهند؛ پس temperature = voltage × ۱۰۰.</li><li>شرط if دمای آستانهٔ ۳۰ درجه را به یک هشدار بصری (قرمز/سبز) تبدیل می‌کند.</li></ul>
+        </div>
+      </aside>
+    </div>
+    <div class="block explain-block">
+      <div class="block-tag">توضیح عملکرد</div>
+      <p class="explain">در این مدار، سنسور دما نقش یک ورودی آنالوگ را بازی می‌کند. خروجی سنسور به پین A0 متصل است و مقدار آن با analogRead خوانده می‌شود؛ چون مبدل آنالوگ‌به‌دیجیتال آردوینو ۱۰ بیتی است، عددی بین ۰ تا ۱۰۲ به‌دست می‌آید. این عدد نخست با نسبت ۵/۱۰۳ به ولتاژ و سپس با ضریب ۱۰۰ به دما تبدیل می‌شود (در سنسورهای این سری هر درجه سلسیوس معادل ۱۰ میلی‌ولت است). اگر دما از آستانهٔ ۳۰ درجه بیشتر شود، LED قرمز به‌عنوان هشدار روشن و LED سبز خاموش می‌گردد؛ در غیر این صورت LED سبز روشن می‌ماند. مقدار دما نیز برای پایش روی Serial Monitor چاپ می‌شود.</p>
+    </div>
+    <figure class="shot-wrap">
+      
+      <img class="shot" src="file:///home/mahdiye-gh/idea/gen/img/p09.png" alt="شبیه‌سازی مسئله ۹"/>
+      
+      <figcaption>شکل ۹: محیط شبیه‌سازی Tinkercad Circuits — چیدمان بردبورد، سیم‌کشی و کد اجراشده</figcaption>
+    </figure>
+    <div class="pagefoot"><span>مهدیه غلامی — ۴۰۱۶۱۲۳۰۵۸</span><span class="grp">گروه ۶۰</span></div>
+  </section>
+  <section class="page">
+    <div class="runhead"><span>گزارش کار آزمایشگاه سیستم‌های دیجیتال — آزمایش شمارهٔ ۱</span><span>آردوینو</span></div>
+    <div class="prob-head">
+      <div class="prob-chip">مسئلهٔ ۱۰</div>
+      <h2 class="prob-title">کنترل LED با سنسور نور (LDR)</h2>
+    </div>
+    <div class="prob-body">
+      <div class="prob-main">
+        <div class="block">
+          <div class="block-tag">صورت مسئله</div>
+          <p class="statement">یک سنسور نور (LDR) به آردوینو وصل کنید؛ برنامه‌ای بنویسید که در صورت کم بودن نور محیط، LED روشن و در صورت زیاد بودن نور، LED خاموش شود.</p>
+        </div>
+        <div class="block">
+          <div class="block-tag">کد آردوینو</div>
+          <div class="code" dir="ltr" style="--cols:2"><pre class="code-pre"><div class="cl"><span class="ln">1</span><span class="lc"><span class="c-kw">int</span> LDRpin = A0;</span></div><div class="cl"><span class="ln">2</span><span class="lc"><span class="c-kw">int</span> LEDpin = <span class="c-num">8</span>;</span></div><div class="cl"><span class="ln">3</span><span class="lc"><span class="c-kw">int</span> lightValue;</span></div><div class="cl"><span class="ln">4</span><span class="lc">&nbsp;</span></div><div class="cl"><span class="ln">5</span><span class="lc"><span class="c-kw">void</span> <span class="c-fn">setup</span>() {</span></div><div class="cl"><span class="ln">6</span><span class="lc">  <span class="c-fn">pinMode</span>(LEDpin, <span class="c-kw">OUTPUT</span>);</span></div><div class="cl"><span class="ln">7</span><span class="lc">  Serial.<span class="c-fn">begin</span>(<span class="c-num">9600</span>);</span></div><div class="cl"><span class="ln">8</span><span class="lc">}</span></div><div class="cl"><span class="ln">9</span><span class="lc">&nbsp;</span></div><div class="cl"><span class="ln">10</span><span class="lc"><span class="c-kw">void</span> <span class="c-fn">loop</span>() {</span></div><div class="cl"><span class="ln">11</span><span class="lc">  lightValue = <span class="c-fn">analogRead</span>(LDRpin);</span></div><div class="cl"><span class="ln">12</span><span class="lc">  Serial.<span class="c-fn">println</span>(lightValue);</span></div><div class="cl"><span class="ln">13</span><span class="lc">&nbsp;</span></div><div class="cl"><span class="ln">14</span><span class="lc">  <span class="c-kw">if</span> (lightValue &lt; <span class="c-num">500</span>) {</span></div><div class="cl"><span class="ln">15</span><span class="lc">    <span class="c-fn">digitalWrite</span>(LEDpin, <span class="c-kw">HIGH</span>);</span></div><div class="cl"><span class="ln">16</span><span class="lc">  } <span class="c-kw">else</span> {</span></div><div class="cl"><span class="ln">17</span><span class="lc">    <span class="c-fn">digitalWrite</span>(LEDpin, <span class="c-kw">LOW</span>);</span></div><div class="cl"><span class="ln">18</span><span class="lc">  }</span></div><div class="cl"><span class="ln">19</span><span class="lc">  <span class="c-fn">delay</span>(<span class="c-num">200</span>);</span></div><div class="cl"><span class="ln">20</span><span class="lc">}</span></div></pre></div>
+        </div>
+      </div>
+      <aside class="prob-side">
+        <div class="notes">
+          <div class="meta-title">نکات کلیدی</div>
+          <ul><li>سنسور LDR با یک مقاومت، یک تقسیم‌کنندهٔ ولتاژ می‌سازد که خروجی آن به پین آنالوگ A0 داده می‌شود.</li><li>در تاریکی مقاومت LDR زیاد و مقدار خوانده‌شده تغییر می‌کند؛ با یک آستانه، LED روشن می‌شود.</li></ul>
+        </div>
+      </aside>
+    </div>
+    <div class="block explain-block">
+      <div class="block-tag">توضیح عملکرد</div>
+      <p class="explain">سنسور نور LDR مقاومتی متغیر دارد که با افزایش شدت نور کاهش می‌یابد. این سنسور به‌همراه یک مقاومت ثابت، یک تقسیم‌کنندهٔ ولتاژ می‌سازد که نقطهٔ میانی آن به پین آنالوگ A0 وصل است. در هر دور از loop، مقدار نور با analogRead خوانده و روی سریال نمایش داده می‌شود. اگر مقدار خوانده‌شده کمتر از آستانهٔ ۵۰۰ باشد (یعنی محیط نسبتاً تاریک باشد) LED روشن و در غیر این صورت خاموش می‌شود. به این ترتیب مدار مانند یک چراغ خودکار عمل می‌کند که در تاریکی روشن می‌شود.</p>
+    </div>
+    <figure class="shot-wrap">
+      
+      <img class="shot" src="file:///home/mahdiye-gh/idea/gen/img/p10.png" alt="شبیه‌سازی مسئله ۱۰"/>
+      
+      <figcaption>شکل ۱۰: محیط شبیه‌سازی Tinkercad Circuits — چیدمان بردبورد، سیم‌کشی و کد اجراشده</figcaption>
+    </figure>
+    <div class="pagefoot"><span>مهدیه غلامی — ۴۰۱۶۱۲۳۰۵۸</span><span class="grp">گروه ۶۰</span></div>
+  </section>
+  <section class="page">
+    <div class="runhead"><span>گزارش کار آزمایشگاه سیستم‌های دیجیتال — آزمایش شمارهٔ ۱</span><span>آردوینو</span></div>
+    <div class="prob-head">
+      <div class="prob-chip">مسئلهٔ ۱۱</div>
+      <h2 class="prob-title">چشمک‌زن با سرعت متغیر از طریق سریال</h2>
+    </div>
+    <div class="prob-body">
+      <div class="prob-main">
+        <div class="block">
+          <div class="block-tag">صورت مسئله</div>
+          <p class="statement">مداری بسازید که LED با سرعت متغیر (از ۵۰۰ میلی‌ثانیه تا ۳ ثانیه) چشمک بزند؛ برای تغییر سرعت، زمان تأخیر را از طریق ورودی سریال وارد کنید.</p>
+        </div>
+        <div class="block">
+          <div class="block-tag">کد آردوینو</div>
+          <div class="code" dir="ltr" style="--cols:2"><pre class="code-pre"><div class="cl"><span class="ln">1</span><span class="lc"><span class="c-kw">int</span> LEDpin = <span class="c-num">9</span>;</span></div><div class="cl"><span class="ln">2</span><span class="lc"><span class="c-kw">int</span> blinkTime = <span class="c-num">1000</span>;</span></div><div class="cl"><span class="ln">3</span><span class="lc">&nbsp;</span></div><div class="cl"><span class="ln">4</span><span class="lc"><span class="c-kw">void</span> <span class="c-fn">setup</span>() {</span></div><div class="cl"><span class="ln">5</span><span class="lc">  <span class="c-fn">pinMode</span>(LEDpin, <span class="c-kw">OUTPUT</span>);</span></div><div class="cl"><span class="ln">6</span><span class="lc">  Serial.<span class="c-fn">begin</span>(<span class="c-num">9600</span>);</span></div><div class="cl"><span class="ln">7</span><span class="lc">  Serial.<span class="c-fn">println</span>(<span class="c-str">"Enter delay between 500 and 3000 ms:"</span>);</span></div><div class="cl"><span class="ln">8</span><span class="lc">}</span></div><div class="cl"><span class="ln">9</span><span class="lc">&nbsp;</span></div><div class="cl"><span class="ln">10</span><span class="lc"><span class="c-kw">void</span> <span class="c-fn">loop</span>() {</span></div><div class="cl"><span class="ln">11</span><span class="lc">  <span class="c-kw">if</span> (Serial.<span class="c-fn">available</span>() &gt; <span class="c-num">0</span>) {</span></div><div class="cl"><span class="ln">12</span><span class="lc">    <span class="c-kw">int</span> newTime = Serial.<span class="c-fn">parseInt</span>();</span></div><div class="cl"><span class="ln">13</span><span class="lc">    <span class="c-kw">if</span> (newTime &gt;= <span class="c-num">500</span> &amp;&amp; newTime &lt;= <span class="c-num">3000</span>) {</span></div><div class="cl"><span class="ln">14</span><span class="lc">      blinkTime = newTime;</span></div><div class="cl"><span class="ln">15</span><span class="lc">      Serial.<span class="c-fn">print</span>(<span class="c-str">"New delay: "</span>);</span></div><div class="cl"><span class="ln">16</span><span class="lc">      Serial.<span class="c-fn">println</span>(blinkTime);</span></div><div class="cl"><span class="ln">17</span><span class="lc">    } <span class="c-kw">else</span> {</span></div><div class="cl"><span class="ln">18</span><span class="lc">      Serial.<span class="c-fn">println</span>(<span class="c-str">"Enter a value between 500 and 3000."</span>);</span></div><div class="cl"><span class="ln">19</span><span class="lc">    }</span></div><div class="cl"><span class="ln">20</span><span class="lc">    <span class="c-kw">while</span> (Serial.<span class="c-fn">available</span>() &gt; <span class="c-num">0</span>) {</span></div><div class="cl"><span class="ln">21</span><span class="lc">      Serial.<span class="c-fn">read</span>();</span></div><div class="cl"><span class="ln">22</span><span class="lc">    }</span></div><div class="cl"><span class="ln">23</span><span class="lc">  }</span></div><div class="cl"><span class="ln">24</span><span class="lc">  <span class="c-fn">digitalWrite</span>(LEDpin, <span class="c-kw">HIGH</span>);</span></div><div class="cl"><span class="ln">25</span><span class="lc">  <span class="c-fn">delay</span>(blinkTime);</span></div><div class="cl"><span class="ln">26</span><span class="lc">  <span class="c-fn">digitalWrite</span>(LEDpin, <span class="c-kw">LOW</span>);</span></div><div class="cl"><span class="ln">27</span><span class="lc">  <span class="c-fn">delay</span>(blinkTime);</span></div><div class="cl"><span class="ln">28</span><span class="lc">}</span></div></pre></div>
+        </div>
+      </div>
+      <aside class="prob-side">
+        <div class="notes">
+          <div class="meta-title">نکات کلیدی</div>
+          <ul><li>اعتبارسنجی ورودی (newTime >= 500 && newTime <= 3000) از مقادیر نامعتبر جلوگیری می‌کند.</li><li>پیام بازخورد در Serial Monitor به کاربر کمک می‌کند تا مقدار صحیح را وارد کند.</li></ul>
+        </div>
+      </aside>
+    </div>
+    <div class="block explain-block">
+      <div class="block-tag">توضیح عملکرد</div>
+      <p class="explain">این مسئله نسخهٔ پیشرفته‌تر و «ایمن» مسئلهٔ ۲ است؛ کاربر سرعت چشمک‌زدن LED را از طریق سریال تعیین می‌کند، اما مقدار واردشده باید در بازهٔ مجاز ۵۰۰ تا ۳۰۰ میلی‌ثانیه باشد. اگر عدد در این بازه قرار گیرد، در blinkTime ذخیره و پیام تأیید چاپ می‌شود؛ در غیر این صورت پیام خطا نمایش داده می‌شود و مقدار پیشین حفظ می‌گردد. سپس LED با زمان تازه‌شده چشمک می‌زند. این اعتبارسنجی ورودی، مدار را در برابر مقادیر نامعتبر و رفتارهای غیرقابل‌پیش‌بینی مقاوم می‌سازد.</p>
+    </div>
+    <figure class="shot-wrap">
+      
+      <img class="shot" src="file:///home/mahdiye-gh/idea/gen/img/p11.png" alt="شبیه‌سازی مسئله ۱۱"/>
+      
+      <figcaption>شکل ۱۱: محیط شبیه‌سازی Tinkercad Circuits — چیدمان بردبورد، سیم‌کشی و کد اجراشده</figcaption>
+    </figure>
+    <div class="pagefoot"><span>مهدیه غلامی — ۴۰۱۶۱۲۳۰۵۸</span><span class="grp">گروه ۶۰</span></div>
+  </section>
+  <section class="page">
+    <div class="runhead"><span>گزارش کار آزمایشگاه سیستم‌های دیجیتال — آزمایش شمارهٔ ۱</span><span>آردوینو</span></div>
+    <div class="prob-head">
+      <div class="prob-chip">مسئلهٔ ۱۲</div>
+      <h2 class="prob-title">سیستم کنترل با چند دکمه و چند LED</h2>
+    </div>
+    <div class="prob-body">
+      <div class="prob-main">
+        <div class="block">
+          <div class="block-tag">صورت مسئله</div>
+          <p class="statement">سه دکمه به آردوینو متصل کنید؛ به‌گونه‌ای که با فشردن هر دکمه، یک LED متفاوت روشن شود (دکمهٔ اول LED قرمز، دکمهٔ دوم LED سبز و دکمهٔ سوم LED آبی).</p>
+        </div>
+        <div class="block">
+          <div class="block-tag">کد آردوینو</div>
+          <div class="code" dir="ltr" style="--cols:2"><pre class="code-pre"><div class="cl"><span class="ln">1</span><span class="lc"><span class="c-kw">int</span> redButton = <span class="c-num">2</span>;</span></div><div class="cl"><span class="ln">2</span><span class="lc"><span class="c-kw">int</span> greenButton = <span class="c-num">3</span>;</span></div><div class="cl"><span class="ln">3</span><span class="lc"><span class="c-kw">int</span> blueButton = <span class="c-num">4</span>;</span></div><div class="cl"><span class="ln">4</span><span class="lc"><span class="c-kw">int</span> redLED = <span class="c-num">8</span>;</span></div><div class="cl"><span class="ln">5</span><span class="lc"><span class="c-kw">int</span> greenLED = <span class="c-num">9</span>;</span></div><div class="cl"><span class="ln">6</span><span class="lc"><span class="c-kw">int</span> blueLED = <span class="c-num">10</span>;</span></div><div class="cl"><span class="ln">7</span><span class="lc">&nbsp;</span></div><div class="cl"><span class="ln">8</span><span class="lc"><span class="c-kw">void</span> <span class="c-fn">setup</span>() {</span></div><div class="cl"><span class="ln">9</span><span class="lc">  <span class="c-fn">pinMode</span>(redButton, <span class="c-kw">INPUT_PULLUP</span>);</span></div><div class="cl"><span class="ln">10</span><span class="lc">  <span class="c-fn">pinMode</span>(greenButton, <span class="c-kw">INPUT_PULLUP</span>);</span></div><div class="cl"><span class="ln">11</span><span class="lc">  <span class="c-fn">pinMode</span>(blueButton, <span class="c-kw">INPUT_PULLUP</span>);</span></div><div class="cl"><span class="ln">12</span><span class="lc">&nbsp;</span></div><div class="cl"><span class="ln">13</span><span class="lc">  <span class="c-fn">pinMode</span>(redLED, <span class="c-kw">OUTPUT</span>);</span></div><div class="cl"><span class="ln">14</span><span class="lc">  <span class="c-fn">pinMode</span>(greenLED, <span class="c-kw">OUTPUT</span>);</span></div><div class="cl"><span class="ln">15</span><span class="lc">  <span class="c-fn">pinMode</span>(blueLED, <span class="c-kw">OUTPUT</span>);</span></div><div class="cl"><span class="ln">16</span><span class="lc">}</span></div><div class="cl"><span class="ln">17</span><span class="lc">&nbsp;</span></div><div class="cl"><span class="ln">18</span><span class="lc"><span class="c-kw">void</span> <span class="c-fn">loop</span>() {</span></div><div class="cl"><span class="ln">19</span><span class="lc">  <span class="c-fn">digitalWrite</span>(redLED, <span class="c-fn">digitalRead</span>(redButton) == <span class="c-kw">LOW</span> ? <span class="c-kw">HIGH</span> : <span class="c-kw">LOW</span>);</span></div><div class="cl"><span class="ln">20</span><span class="lc">  <span class="c-fn">digitalWrite</span>(greenLED, <span class="c-fn">digitalRead</span>(greenButton) == <span class="c-kw">LOW</span> ? <span class="c-kw">HIGH</span> : <span class="c-kw">LOW</span>);</span></div><div class="cl"><span class="ln">21</span><span class="lc">  <span class="c-fn">digitalWrite</span>(blueLED, <span class="c-fn">digitalRead</span>(blueButton) == <span class="c-kw">LOW</span> ? <span class="c-kw">HIGH</span> : <span class="c-kw">LOW</span>);</span></div><div class="cl"><span class="ln">22</span><span class="lc">}</span></div></pre></div>
+        </div>
+      </div>
+      <aside class="prob-side">
+        <div class="notes">
+          <div class="meta-title">نکات کلیدی</div>
+          <ul><li>هر دکمه به‌صورت مستقل یک LED را کنترل می‌کند و ساختار ورودی/خروجی یک‌به‌یک حفظ شده است.</li><li>با INPUT_PULLUP، فشردن دکمه خط را به زمین وصل کرده و مقدار LOW تولید می‌کند؛ بنابراین منطق معکوس شده است.</li></ul>
+        </div>
+      </aside>
+    </div>
+    <div class="block explain-block">
+      <div class="block-tag">توضیح عملکرد</div>
+      <p class="explain">در این پروژه یک سامانهٔ کنترل چندکاناله ساخته شده است: سه دکمهٔ ورودی و سه LED خروجی، به‌گونه‌ای که هر دکمه به‌طور مستقل یک LED را کنترل می‌کند (قرمز، سبز و آبی). همهٔ پین‌های دکمه با INPUT_PULLUP پیکربندی شده‌اند تا نیازی به مقاومت خارجی نباشد؛ در این حالت فشردن دکمه خط را به زمین وصل کرده و مقدار LOW تولید می‌کند، بنابراین منطق شرطی به‌صورت معکوس نوشته شده است. این ساختار، پایهٔ طراحی صفحه‌کلیدها و پنل‌های کنترل صنعتی محسوب می‌شود.</p>
+    </div>
+    <figure class="shot-wrap">
+      
+      <img class="shot" src="file:///home/mahdiye-gh/idea/gen/img/p12.png" alt="شبیه‌سازی مسئله ۱۲"/>
+      
+      <figcaption>شکل ۱۲: محیط شبیه‌سازی Tinkercad Circuits — چیدمان بردبورد، سیم‌کشی و کد اجراشده</figcaption>
+    </figure>
+    <div class="pagefoot"><span>مهدیه غلامی — ۴۰۱۶۱۲۳۰۵۸</span><span class="grp">گروه ۶۰</span></div>
+  </section>
+  <section class="page">
+    <div class="runhead"><span>گزارش کار آزمایشگاه سیستم‌های دیجیتال</span><span>نتایج و تحلیل</span></div>
+    <h2 class="sec-title"><span class="sec-bar"></span>۷. نتایج شبیه‌سازی</h2>
+    <p class="para">پس از اجرای هر دوازده مسئله در محیط Tinkercad، رفتار مشاهده‌شده با انتظار منطقی هر مدار مطابقت داشت. خلاصهٔ نتایج در جدول زیر آمده است:</p>
+    <table class="res-table">
+      <thead><tr><th>مسئله</th><th>خروجی مورد انتظار</th><th>نتیجهٔ مشاهده‌شده</th><th>وضعیت</th></tr></thead>
+      <tbody>
+        <tr><td>۱</td><td>چشمک LED هر یک ثانیه</td><td>روشن/خاموش منظم</td><td class="ok">✔ صحیح</td></tr>
+        <tr><td>۲</td><td>تغییر زمان با ورودی سریال</td><td>اعمال مقادیر واردشده</td><td class="ok">✔ صحیح</td></tr>
+        <tr><td>۳ و ۴</td><td>کنترل LED با دکمه / Toggle</td><td>پاسخ درست به فشردن</td><td class="ok">✔ صحیح</td></tr>
+        <tr><td>۵ و ۶</td><td>چشمک متناوب دو LED / زمان ۲ ثانیه</td><td>حالت مکمل و زمان‌بندی درست</td><td class="ok">✔ صحیح</td></tr>
+        <tr><td>۷ و ۸</td><td>ترتیب رنگ‌های RGB و چشمک دو LED</td><td>قرمز/سبز/آبی به‌درستی</td><td class="ok">✔ صحیح</td></tr>
+        <tr><td>۹ و ۱۰</td><td>واکنش به دما و نور</td><td>سوییچ در آستانهٔ ۳۰ درجه و مقدار نور</td><td class="ok">✔ صحیح</td></tr>
+        <tr><td>۱۱ و ۱۲</td><td>سرعت متغیر / سه دکمه و سه LED</td><td>اعتبارسنجی ورودی و کنترل مستقل</td><td class="ok">✔ صحیح</td></tr>
+      </tbody>
+    </table>
+    <h2 class="sec-title"><span class="sec-bar"></span>۸. تحلیل نتایج</h2>
+    <p class="para">در مدارهای کنترلی، LED هنگامی روشن می‌شود که پین خروجی در وضعیت <code>HIGH</code> (حدود ۵ ولت) قرار گیرد. در سنسورها، مقدار آنالوگ خوانده‌شده توسط <code>analogRead</code> به یک کمیت فیزیک تبدیل و با یک آستانه مقایسه می‌شود؛ این همان منطق تصمیم‌گیری دیجیتال است. استفاده از <code>INPUT_PULLUP</code> در مسائل ۴ و ۱۲ باعث شد منطق دکمه معکوس شود و نیازی به مقاومت خارجی نباشد.</p>
+    <div class="pagefoot"><span>مهدیه غلامی — ۴۰۱۶۱۲۳۰۵۸</span><span class="grp">گروه ۶۰</span></div>
+  </section>
+  <section class="page">
+    <div class="runhead"><span>گزارش کار آزمایشگاه سیستم‌های دیجیتال</span><span>نتیجه‌گیری و پیشنهادات</span></div>
+    <h2 class="sec-title"><span class="sec-bar"></span>۹. نتیجه‌گیری</h2>
+    <p class="para">این آزمایش نشان داد که میکروکنترلر آردوینو ابزاری قدرتمند و انعطاف‌پذیر برای پیاده‌سازی مدارهای دیجیتال است. با ترکیب فرمان‌های سادهٔ ورودی/خروجی دیجیتال و آنالوگ، توانستیم رفتارهای متنوعی از جمله چشمک‌زن، کنترل با دکمه، نمایشگر RGB و سامانهٔ هشدار دما و نور را بسازیم. استفاده از متغیرها و پورت سریال نیز امکان ساخت مدارهای پویا و قابل تنظیم را فراهم می‌کند.</p>
+    <h2 class="sec-title"><span class="sec-bar"></span>۱۰. پیشنهادات</h2>
+    <ul class="nice-list">
+      <li>استفاده از فرمان <code>analogWrite</code> (PWM) برای کنترل شدت روشنایی LED به‌جای فقط روشن و خاموش کردن.</li>
+      <li>افزودن بازر (Buzzer) برای تبدیل هشدارهای نوری به هشدارهای صوتی در سنسور دما.</li>
+      <li>پیاده‌سازی منطق ضدپرش (Debounce) پیشرفته‌تر با تابع <code>millis()</code> به‌جای <code>delay()</code>.</li>
+      <li>طراحی گیت‌های منطقی AND، OR و NAND با ترکیب چند ورودی دیجیتال.</li>
+    </ul>
+    <h2 class="sec-title"><span class="sec-bar"></span>۱۱. منابع</h2>
+    <ol class="refs">
+      <li>جزوهٔ درس آزمایشگاه سیستم‌های دیجیتال، بخش آردوینو — م.ح. سلیمانی الموتی.</li>
+      <li>مستندات رسمی Arduino.cc — Reference: digitalWrite, pinMode, analogRead.</li>
+      <li>مستندات Autodesk Tinkercad Circuits.</li>
+      <li>Margolis, J. <i>Arduino Cookbook</i>, O'Reilly Media.</li>
+    </ol>
+    <div class="end-mark">پایان</div>
+    <div class="pagefoot"><span>مهدیه غلامی — ۴۰۱۶۱۲۳۰۵۸</span><span class="grp">گروه ۶۰</span></div>
+  </section></body></html>
